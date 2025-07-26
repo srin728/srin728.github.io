@@ -1,0 +1,254 @@
+{
+  "name": "斉藤 凜 （さいとう りん）",
+  "affiliation": "東北大学 情報科学研究科 博士課程2年",
+  "email": "Email: rin.saito [ at ] dc.tohoku.ac.jp",
+  "address": "〒980-8579 宮城県仙台市青葉区荒巻字青葉6番3号09",
+  "biography": "経歴",
+  "biography_content": "2022年 東北大学 工学部 電気情報物理工学科 卒業\n2024年 東北大学 大学院 情報科学研究科 修士課程 修了",
+  "research_areas": "研究分野",
+  "research_areas_content": "組合せ遷移，グラフアルゴリズム，パラメータ化計算量に興味があります．",
+  "publications": "査読付き論文",
+  "publications_list": [
+    {
+      "title": "Basis sequence reconfiguration in the union of matroids",
+      "author": "Tesshu Hanaka, Yuni Iwamasa, Yasuaki Kobayashi, Yuto Okada, Rin Saito",
+      "links": [
+        {
+          "text": "Proceedings of ISAAC 2024, LIPIcs, vol. 322, 38:1-38:16, 2024.",
+          "doi_id": "10.4230/LIPICS.ISAAC.2024.38"
+        }
+      ],
+      "highlightText": [
+        "Rin Saito",
+        "ISAAC 2024"
+      ]
+    },
+    {
+      "title": "Reconfiguration of Vertex-Disjoint Shortest Paths on Graphs",
+      "author": "Rin Saito, Hiroshi Eto, Takehiro Ito, Ryuhei Uehara",
+      "links": [
+        {
+          "text": "Journal of Graph Algorithms and Applications, Vol. 28, No. 3, pp. 87-101, 10 September 2024.",
+          "doi_id": "10.7155/jgaa.v28i3.2973"
+        },
+        {
+          "text": "Proceedings of WALCOM 2023, LNCS, Vol. 13973, pp. 191-201, 2023.",
+          "doi_id": "10.1007/978-3-031-27051-2_17"
+        }
+      ],
+      "highlightText": [
+        "Rin Saito",
+        "WALCOM 2023",
+        "Journal of Graph Algorithms and Applications"
+      ]
+    }
+  ],
+  "preprints": "プレプリント論文",
+  "preprints_list": [
+    {
+      "title": "Computing diverse pair of solutions for tractable SAT",
+      "author": "Tatsuya Gima, Yuni Iwamasa, Yasuaki Kobayashi, Kazuhiro Kurita, Yota Otachi, Rin Saito",
+      "links": [
+        {
+          "arxiv_id": "10.48550/ARXIV.2412.04016"
+        }
+      ],
+      "highlightText": [
+        "Rin Saito"
+      ]
+    }
+  ],
+  "presentations": "研究発表",
+  "presentations_list": [
+    {
+      "title": "“Reconfiguration of vertex-disjoint shortest paths on split graphs",
+      "author": "Rin Saito, Hiroshi Eto, Takehiro Ito",
+      "type": "international_non_refereed",
+      "links": [
+        {
+          "text": "The 4th International Workshop on Combinatorial Reconfiguration (CoRe 2022), Banff, Canada, May 8-13, 2022."
+        }
+      ],
+      "highlightText": [
+        "Rin Saito",
+        "CoRe 2022"
+      ]
+    },
+    {
+      "title": "点素最短パス遷移の計算複雑性",
+      "author": "斉藤 凜, 江藤 宏, 伊藤 健洋, 上原隆平",
+      "type": "domestic_meeting",
+      "links": [
+        {
+          "text": "電気情報通信学会コンピュテーション研究会, 愛媛, 2022年12月6日."
+        }
+      ],
+      "highlightText": [
+        "斉藤 凜"
+      ]
+    },
+    {
+      "title": "Reconfiguration of Vertex-Disjoint Shortest Paths on Graphs",
+      "author": "Rin Saito, Hiroshi Eto, Takehiro Ito and Ryuhei Uehara",
+      "type": "international_non_refereed",
+      "links": [
+        {
+          "text": "The 17th International Conference and Workshops on Algorithms and Computation (WALCOM 2023), Hsinchu, Taiwan, March 22–24, 2023."
+        }
+      ],
+      "highlightText": [
+        "Rin Saito",
+        "WALCOM 2023"
+      ]
+    },
+    {
+      "title": "点素最短パス遷移問題に対するアルゴリズム",
+      "author": "斉藤 凜, 江藤 宏, 伊藤 健洋, 上原隆平",
+      "type": "domestic_meeting",
+      "links": [
+        {
+          "text": "科研費・学術変革領域研究(B)「組合せ遷移の展開に向けた計算機科学・工学・数学によるアプローチの融合」2022 年度「組合せ遷移」学生シンポジウム, 宮城, 2023年2月22日."
+        }
+      ],
+      "highlightText": [
+        "斉藤 凜"
+      ]
+    },
+    {
+      "title": "Computing diverse pair of solutions for SAT",
+      "author": "儀間 達也, 岩政 勇仁, 小林 靖明, 栗田 和宏, 大舘 陽太, 斉藤 凜",
+      "type": "domestic_meeting",
+      "links": [
+        {
+          "text": "2023年度冬のLAシンポジウム, 京都, 2024年2月19日–21日."
+        }
+      ],
+      "highlightText": [
+        "斉藤 凜"
+      ]
+    },
+    {
+      "title": "Computing diverse pair of solutions for SAT",
+      "author": "儀間 達也, 岩政 勇仁, 小林 靖明, 栗田 和宏, 大舘 陽太, 斉藤 凜",
+      "type": "domestic_meeting",
+      "links": [
+        {
+          "text": "2024年電子情報通信学会 総合大会 COMP-AFSA 学生シンポジウム, 広島, 2024年3月5日-6日."
+        }
+      ],
+      "highlightText": [
+        "斉藤 凜"
+      ]
+    },
+    {
+      "title": "マトロイドの基の組の遷移問題",
+      "author": "土中 哲秀, 岩政 勇仁, 小林 靖明, 岡田 優斗, 斉藤 凜",
+      "type": "domestic_meeting",
+      "links": [
+        {
+          "text": "日本オペレーションズ・リサーチ学会 研究部会「最適化の理論とアルゴリズム:未来を担う若手研究者の集い 2024」,茨城, 2024年5月18-19日."
+        }
+      ],
+      "highlightText": [
+        "斉藤 凜"
+      ]
+    },
+    {
+      "title": "グラフ上の詰め込みと組合せ遷移",
+      "author": "斉藤 凜",
+      "type": "domestic_meeting",
+      "links": [
+        {
+          "text": "離散数学とその応用研究集会2024 , 山形大学, 2024年8月19日-21日."
+        }
+      ],
+      "highlightText": [
+        "斉藤 凜"
+      ]
+    },
+    {
+      "title": "マトロイドの基の組の遷移問題",
+      "author": "土中 哲秀, 岩政 勇仁, 小林 靖明, 岡田 優斗, 斉藤 凜",
+      "type": "domestic_meeting",
+      "links": [
+        {
+          "text": "電子情報通信学会 コンピュテーション研究会 , 東北大学, 2024年10月24日."
+        }
+      ],
+      "highlightText": [
+        "斉藤 凜"
+      ]
+    },
+    {
+      "title": "Basis Sequence Reconfiguration in the Union of Matroids",
+      "author": "Tesshu Hanaka, Yuni Iwamasa, Yasuaki Kobayashi, Yuto Okada, Rin Saito",
+      "type": "international_non_refereed",
+      "links": [
+        {
+          "text": "The 5th International Workshop on Combinatorial Reconfiguration (CoRe 2025), Fukuoka, Japan, October 7-11, 2024."
+        }
+      ],
+      "highlightText": [
+        "Rin Saito",
+        "CoRe 2025"
+      ]
+    },
+    {
+      "title": "Basis Sequence Reconfiguration in the Union of Matroids",
+      "author": "Tesshu Hanaka, Yuni Iwamasa, Yasuaki Kobayashi, Yuto Okada, Rin Saito",
+      "type": "international_non_refereed",
+      "links": [
+        {
+          "text": "The 35th International Symposium on Algorithms and Computation (ISAAC 2025), Sydney, Australia, December 8-11, 2024."
+        }
+      ],
+      "highlightText": [
+        "Rin Saito",
+        "ISAAC 2025"
+      ]
+    },
+    {
+      "title": "Complexity of Reconfiguring Vertex-Disjoint Shortest Paths",
+      "author": "Rin Saito and Takehiro Ito",
+      "type": "international_non_refereed",
+      "links": [
+        {
+          "text": "The 16th Annual Meeting of Asian Association for Algorithms and Computation (AAAC 2025), Hong Kong, China, May 31 and June 1, 2025"
+        }
+      ],
+      "highlightText": [
+        "Rin Saito",
+        "AAAC 2025"
+      ]
+    }
+  ],
+  "awards": "受賞歴",
+  "awards_list": [
+    {
+      "title": "東北大学 情報科学研究科 第33回 博士後期課程学生発表会ベストプレゼンテーション賞",
+      "author": "",
+      "links": [
+        {
+          "text": ""
+        }
+      ],
+      "highlightText": [
+        ""
+      ]
+    },
+    {
+      "title": "最適化の理論とアルゴリズム：未来を担う若手研究者の集い 2024 優秀発表賞",
+      "author": "",
+      "links": [
+        {
+          "text": "",
+          "url": "https://orsj.org/raota/#tsukuba24"
+        }
+      ],
+      "highlightText": [
+        ""
+      ]
+    }
+  ],
+  "links": "リンク"
+}

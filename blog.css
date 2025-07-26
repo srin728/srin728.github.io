@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* === 基本スタイル === */
+body {
+  margin: 0;
+  background-color: #fff;
+  color: #0c7bbb;
+  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* === レイアウト === */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 180px;
+  background-color: #0c7bbb;
+  padding: 1em 15px 0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+
+.sidebar h2 {
+  margin: 0.5em 0 1em;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 0.5em;
+  font-size: 1.3em;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5em;
+}
+
+.sidebar li {
+  margin: 1em 0;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.sidebar li:hover {
+  transform: translateX(5px);
+}
+
+.sidebar li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 0.3em 0;
+  transition: color 0.3s ease;
+}
+
+.sidebar li a:hover {
+  color: #7a99cf;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  margin-left: 200px;
+  padding: 1.5em 25px;
+  overflow-y: auto;
+  background-color: #f9fcff;
+  color: #333;
+  font-size: 1.05em;
+  line-height: 1.7;
+}
+
+/* === セクション === */
+.section {
+  border-left: 5px solid #0c7bbb;
+  padding: 1em 1.2em;
+  margin: 2em 0;
+  background-color: rgba(122, 153, 207, 0.1);
+  border-radius: 6px;
+}
+
+.content h1 {
+  margin-bottom: 0.5em;
+  color: #0c7bbb;
+  border-bottom: 2px solid #7a99cf;
+  padding-bottom: 0.3em;
+}
+
+.content h2,
+.content h3 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  color: #0c7bbb;
+}
+
+.content p,
+.content ul,
+.content ol {
+  font-size: 1em;
+  line-height: 1.7;
+  margin: 0.8em 0;
+  color: #333;
+}
+
+.content li {
+  line-height: 1.7;
+  margin-bottom: 0.5em;
+}
+
+/* === 補助要素 === */
+.highlight {
+  text-decoration: underline;
+  text-decoration-color: #7a99cf;
+  font-weight: bold;
+  color: #0c7bbb;
+}
+
+.contact {
+  margin-top: 0.5em;
+  font-size: 0.95em;
+  color: #555;
+}
+
+#language-switcher {
+  margin-top: 1.5em;
+  text-align: center;
+}
+
+#lang-btn {
+  background-color: #7a99cf;
+  color: white;
+  border: none;
+  padding: 0.6em 1.5em;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#lang-btn:hover {
+  background-color: #0c7bbb;
+  transform: translateY(-2px);
+}
+
+footer {
+  text-align: center;
+  font-size: 0.85em;
+  color: #999;
+  padding: 1em;
+  margin-top: 4em;
+  border-top: 1px solid #eee;
+}
+
+.sidebar footer {
+  text-align: center;
+  padding: 1em 0;
+  margin-top: 2em;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar footer a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: color 0.3s ease;
+}
+
+.sidebar footer a:hover {
+  color: #7a99cf;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+/* === カスタムボタン === */
+.custom-button {
+  display: inline-block;
+  font-size: 80%;
+  font-weight: bold;
+  padding: 0.3em 1em;
+  margin-left: 0.8em;
+  vertical-align: middle;
+  background-color: #fff;
+  color: #0c7bbb;
+  border: 1px solid #0c7bbb;
+  border-radius: 0.5em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.2s, transform 0.2s;
+}
+
+.custom-button:hover {
+  background-color: #0c7bbb;
+  color: #fff;
+  border-color: #0c7bbb;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.custom-button:active {
+  background-color: #095f8a;
+  border-color: #095f8a;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+}
+
+/* === レスポンシブ対応 === */
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    box-shadow: none;
+    padding: 1em 15px;
+  }
+
+  .sidebar ul {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1em;
+    flex-wrap: wrap;
+  }
+
+  .sidebar li {
+    margin: 0.5em 0.8em;
+    text-align: center;
+  }
+
+  .sidebar li:hover {
+    transform: none;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 1.5em;
+  }
+
+  #language-switcher {
+    margin: 0.5em 0 1.5em;
+  }
+}
+
+/* === MathJax 調整 === */
+mjx-container[jax="CHTML"][display="true"] {
+  display: block;
+  text-align: left !important;
+  margin-left: 3em;
+}

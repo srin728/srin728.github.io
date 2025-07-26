@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>斉藤 凜 (Rin Saito)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-jLKHWM1S8Dt5aOjRFSKXlHfyNUGttGyepXgmm/Eq9GgI3Z1bgHVRfdaG8QlZbzw1" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <ul>
+        <li><a href="#biography" data-i18n="biography"></a></li>
+        <li><a href="#research" data-i18n="research_areas"></a></li>
+        <li><a href="#publications" data-i18n="publications"></a></li>
+        <li><a href="#presentations" data-i18n="presentations"></a></li>
+        <li><a href="#awards" data-i18n="awards"></a></li>
+        <li><a href="#links" data-i18n="links"></a></li>
+      </ul>
+    </aside>
+
+    <main class="content">
+      <h1 id="name"></h1>
+      <p id="affiliation"></p>
+      <p id="email" class="contact"></p>
+      <p id="address" class="contact"></p>
+      <div id="language-switcher">
+        <button id="lang-btn" onclick="toggleLanguage()">English</button>
+      </div>
+
+      <section id="biography" class="section">
+        <h2 data-i18n="biography"></h2>
+        <p data-i18n="biography_content"></p>
+      </section>
+
+      <section id="research" class="section">
+        <h2 data-i18n="research_areas"></h2>
+        <p data-i18n="research_areas_content"></p>
+      </section>
+
+      <section id="publications" class="section">
+        <h2 data-i18n="publications"></h2>
+        <div id="publicationsList"></div>
+      </section>
+
+      <section id="preprints" class="section">
+        <h2 data-i18n="preprints"></h2>
+        <div id="preprintsList"></div>
+      </section>
+
+      <section id="presentations" class="section">
+        <h2 data-i18n="presentations"></h2>
+        <div id="presentationList"></div>
+      </section>
+
+      <section id="awards" class="section">
+        <h2 data-i18n="awards"></h2>
+        <div id="awardsList"></div>
+      </section>
+
+      <section id="links" class="section">
+        <h2 data-i18n="links"></h2>
+        <ul>
+          <li><a href="https://dblp.org/pid/342/6324.html">DBLP</a></li>
+          <li><a href="https://orcid.org/0000-0002-3953-4339">ORCID</a></li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <span>Last updated: July 25, 2025 <a href="blog.html" class="no-underline"> 🍙</a></span>
+  </footer>
+</body>
+
+</html>

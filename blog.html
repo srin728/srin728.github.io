@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rin's Notes</title>
+  <meta name="viewport" content="nofollow, width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="blog.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']], // インライン数式を $...$ と \(...\) で認識
+        displayMath: [['$$', '$$'], ['\\[', '\\]']], // ブロック数式を $$...$$ と \[...\] で認識
+        processEscapes: true, // バックスラッシュでエスケープされた $ を処理
+      },
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="blog.js" defer></script>
+</head>
+
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>記事一覧</h2>
+      <ul id="articleList"></ul>
+      <footer>
+        <a href="index.html" class="no-underline">← ホームへ戻る</a>
+      </footer>
+    </aside>
+
+    <main class="content">
+      <div id="articleContent">
+        <p>左のメニューから記事を選んでください。</p>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>
