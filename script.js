@@ -1,37 +1,45 @@
 let currentLang = "ja";
 
-// 初期読み込み時の言語設定
+// イベント設定
 window.addEventListener("DOMContentLoaded", () => {
   loadLanguage(currentLang);
+  updateSidebarState();
 });
+window.addEventListener("resize", updateSidebarState);
 
-// 言語切り替え処理
+// サイドバーの状態を更新
+function updateSidebarState() {
+  const sidebar = document.querySelector(".sidebar");
+  sidebar.classList.toggle("collapsed", window.innerWidth <= 768);
+}
+
+// 言語切り替え
 function toggleLanguage() {
   const nextLang = currentLang === "ja" ? "en" : "ja";
   loadLanguage(nextLang);
 }
 
-// 言語ファイルの読み込みと画面更新
+// 言語ファイルを読み込んで反映
 async function loadLanguage(lang) {
   try {
     const res = await fetch(`lang/${lang}.json`);
     if (!res.ok) throw new Error(`lang/${lang}.json の読み込み失敗 (${res.statusText})`);
-
     const dict = await res.json();
 
-    // テキスト要素の置き換え
     document.querySelectorAll("[data-i18n]").forEach(el => {
       const key = el.getAttribute("data-i18n");
-      if (dict[key]) el.innerHTML = dict[key].replace(/\n/g, "<br>");
+      if (Array.isArray(dict[key])) {
+        el.innerHTML = `<ul>${dict[key].map(item => `<li>${item}</li>`).join("")}</ul>`;
+      } else {
+        el.innerHTML = dict[key]?.replace(/\n/g, "<br>") || "";
+      }
     });
 
-    // 基本情報の更新
     ["name", "affiliation", "email", "address"].forEach(id => {
       const el = document.getElementById(id);
       if (el && dict[id]) el.innerText = dict[id];
     });
 
-    // 言語切り替えボタンと非表示要素制御
     const langBtn = document.getElementById("lang-btn");
     if (langBtn) langBtn.innerText = lang === "ja" ? "English" : "日本語";
 
@@ -40,18 +48,16 @@ async function loadLanguage(lang) {
 
     currentLang = lang;
 
-    // データリストの描画
-    displayJsonData(dict["publications_list"], "publicationsList", "publications"); // 識別子を追加
-    displayJsonData(dict["preprints_list"], "preprintsList", "preprints");       // 識別子を追加
+    displayJsonData(dict["publications_list"], "publicationsList", "publications");
+    displayJsonData(dict["preprints_list"], "preprintsList", "preprints");
     displayJsonData(dict["awards_list"], "awardsList", "awards");
     displayPresentations(dict);
-
   } catch (error) {
     console.error("言語ファイルの読み込みに失敗:", error);
   }
 }
 
-// プレゼンテーション一覧（カテゴリごとに ol reversed で表示）
+// プレゼンテーション表示
 function displayPresentations(dict) {
   const data = dict["presentations_list"];
   const container = document.getElementById("presentationList");
@@ -65,33 +71,22 @@ function displayPresentations(dict) {
   };
 
   const grouped = Object.fromEntries(Object.keys(categories).map(key => [key, []]));
-
-  data.forEach(item => {
-    if (grouped[item.type]) {
-      grouped[item.type].push(item);
-    }
-  });
+  data.forEach(item => grouped[item.type]?.push(item));
 
   for (const [typeKey, items] of Object.entries(grouped)) {
-    if (items.length === 0) continue;
+    if (!items.length) continue;
 
-    const title = document.createElement("h3");
-    title.textContent = categories[typeKey];
-    container.appendChild(title);
-
+    container.insertAdjacentHTML("beforeend", `<h3>${categories[typeKey]}</h3>`);
     const ol = document.createElement("ol");
     ol.setAttribute("reversed", true);
+
     items.slice().reverse().forEach(item => {
-      const li = document.createElement("li");
-
-      const highlights = Array.isArray(item.highlightText)
-        ? item.highlightText
-        : item.highlightText ? [item.highlightText] : [];
-
+      const highlights = Array.isArray(item.highlightText) ? item.highlightText : item.highlightText ? [item.highlightText] : [];
       const authorHtml = highlightText(item.author || "", highlights);
       const titleHtml = highlightText(item.title || "", highlights);
       const linksHtml = generateLinksHtml(item.links, highlights);
 
+      const li = document.createElement("li");
       li.innerHTML = `
         ${authorHtml ? `${authorHtml}: ` : ""}
         ${titleHtml ? `${titleHtml}<br>` : ""}
@@ -104,38 +99,33 @@ function displayPresentations(dict) {
   }
 }
 
-// 一般的なデータリストの描画（ul）
-function displayJsonData(dataArray, targetElementId, targetType) {
-  const container = document.getElementById(targetElementId);
+// 一般データリストの表示
+function displayJsonData(dataArray, targetId, type) {
+  const container = document.getElementById(targetId);
   if (!container || !Array.isArray(dataArray)) return;
 
   container.innerHTML = "";
-
   const ol = document.createElement("ol");
   ol.setAttribute("reversed", true);
 
   dataArray.forEach(item => {
-    const li = document.createElement("li");
-
-    const highlights = Array.isArray(item.highlightText)
-      ? item.highlightText
-      : item.highlightText ? [item.highlightText] : [];
-
+    const highlights = Array.isArray(item.highlightText) ? item.highlightText : item.highlightText ? [item.highlightText] : [];
     const authorHtml = highlightText(item.author || "", highlights);
     const titleHtml = highlightText(item.title || "", highlights);
     const linksHtml = generateLinksHtml(item.links, highlights);
 
-    // awards_list 専用のリンク処理
-    if (targetType === "awards" && item.links && item.links.url) {
-      // awards_list のリンクは custom-button として別途生成
-      const awardLinkHtml = `<a class="custom-button" href="${item.links.url}" target="_blank">${Link}</a>`;
-      // 既存の linksHtml があればそれと結合、なければ awardLinkHtml のみ
-      linksHtml = linksHtml ? `${linksHtml} ${awardLinkHtml}` : awardLinkHtml;
+    let titleWithCustomLink = titleHtml;
+    if (type === "awards" && Array.isArray(item.links)) {
+      const linkObj = item.links.find(link => link.url);
+      if (linkObj) {
+        titleWithCustomLink += ` <a class="custom-button" href="${linkObj.url}" target="_blank">${linkObj.text || "Link"}</a>`;
+      }
     }
 
+    const li = document.createElement("li");
     li.innerHTML = `
       ${authorHtml ? `${authorHtml}: ` : ""}
-      ${titleHtml ? `${titleHtml}<br>` : ""}
+      ${titleWithCustomLink}<br>
       ${linksHtml}
     `;
     ol.appendChild(li);
@@ -144,20 +134,17 @@ function displayJsonData(dataArray, targetElementId, targetType) {
   container.appendChild(ol);
 }
 
-// ハイライト処理
+// テキスト中のハイライト処理
 function highlightText(text, highlights) {
   if (!text || !highlights?.length) return text;
-
-  let result = text;
   highlights.forEach(term => {
     const regex = new RegExp(escapeRegExp(term), "gi");
-    result = result.replace(regex, match => `<span class="highlight">${match}</span>`);
+    text = text.replace(regex, match => `<span class="highlight">${match}</span>`);
   });
-
-  return result;
+  return text;
 }
 
-// DOI/arXivリンク生成
+// リンクのHTML生成（DOI, arXiv対応）
 function generateLinksHtml(links, highlights) {
   if (!links) return "";
 
@@ -168,15 +155,20 @@ function generateLinksHtml(links, highlights) {
     return `${text}${doi}${arxiv}`;
   };
 
-  if (Array.isArray(links)) {
-    return links.map(createLink).join("<br>");
-  } else if (typeof links === "object") {
-    return createLink(links);
-  }
-  return "";
+  return Array.isArray(links)
+    ? links.map(createLink).join("<br>")
+    : typeof links === "object"
+      ? createLink(links)
+      : "";
 }
 
-// 特殊文字をエスケープ
+// 正規表現用エスケープ
 function escapeRegExp(text) {
   return text.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
+}
+
+// モバイル用メニュー切り替え
+function toggleSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  sidebar.classList.toggle('collapsed', window.innerWidth <= 768 && !sidebar.classList.contains('collapsed'));
 }

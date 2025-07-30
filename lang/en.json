@@ -4,7 +4,10 @@
   "email": "Email: rin.saito [ at ] dc.tohoku.ac.jp",
   "address": "Aramaki aza Aoba 6-3-09, Aoba-ku Sendai-city Miyagi-pref. 980-8579, Japan",
   "biography": "C.V.",
-  "biography_content": "March 2022,  Bachelor of DepEngineering, Tohoku University \nMarch 2024, Master of Information Sciences, Tohoku University",
+  "biography_content": [
+    "March 2022,  Bachelor of DepEngineering, Tohoku University",
+  "March 2024, Master of Information Sciences, Tohoku University"
+  ],
   "research_areas": "Research Interests",
   "research_areas_content": "Graph Algorithms, Parameterized Complexity, Combinatorial Reconfiguration",
   "publications": "Refereed Papers",

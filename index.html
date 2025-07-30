@@ -12,6 +12,7 @@
 </head>
 
 <body>
+  <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
   <div class="container">
     <aside class="sidebar">
       <ul>
@@ -27,8 +28,10 @@
     <main class="content">
       <h1 id="name"></h1>
       <p id="affiliation"></p>
-      <p id="email" class="contact"></p>
-      <p id="address" class="contact"></p>
+      <address class="contact">
+        <p id="email"></p>
+        <p id="address"></p>
+      </address>
       <div id="language-switcher">
         <button id="lang-btn" onclick="toggleLanguage()">English</button>
       </div>
@@ -74,7 +77,7 @@
   </div>
 
   <footer>
-    <span>Last updated: July 25, 2025 <a href="blog.html" class="no-underline"> 🍙</a></span>
+    <span>Last updated: July 30, 2025 <a href="blog.html" class="no-underline"> 🍙</a></span>
   </footer>
 </body>
 
