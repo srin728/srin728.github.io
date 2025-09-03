@@ -6,14 +6,27 @@
   "biography": "C.V.",
   "biography_content": [
     "March 2022,  Bachelor of DepEngineering, Tohoku University",
-  "March 2024, Master of Information Sciences, Tohoku University"
+    "March 2024, Master of Information Sciences, Tohoku University"
   ],
   "research_areas": "Research Interests",
   "research_areas_content": "Graph Algorithms, Parameterized Complexity, Combinatorial Reconfiguration",
   "publications": "Refereed Papers",
   "publications_list": [
     {
-      "title": "Basis sequence reconfiguration in the union of matroids",
+      "title": "Coloring Reconfiguration under Color Swapping",
+      "author": "Janosch Fuchs, Rin Saito, Tatsuhiro Suga, Takahiro Suzuki, Yuma Tamura",
+      "links": [
+        {
+          "text": "Proceedings of ISAAC 2025, to appear."
+        }
+      ],
+      "highlightText": [
+        "Rin Saito",
+        "ISAAC 2025"
+      ]
+    },
+    {
+      "title": "Basis Sequence Reconfiguration in the Union of Matroids",
       "author": "Tesshu Hanaka, Yuni Iwamasa, Yasuaki Kobayashi, Yuto Okada, Rin Saito",
       "links": [
         {

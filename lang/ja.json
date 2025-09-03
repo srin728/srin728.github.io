@@ -6,14 +6,27 @@
   "biography": "経歴",
   "biography_content": [
     "2022年 東北大学 工学部 電気情報物理工学科 卒業",
-  "2024年 東北大学 大学院 情報科学研究科 修士課程 修了"
+    "2024年 東北大学 大学院 情報科学研究科 修士課程 修了"
   ],
   "research_areas": "研究分野",
   "research_areas_content": "組合せ遷移，グラフアルゴリズム，パラメータ化計算量に興味があります．",
   "publications": "査読付き論文",
   "publications_list": [
     {
-      "title": "Basis sequence reconfiguration in the union of matroids",
+      "title": "Coloring Reconfiguration under Color Swapping",
+      "author": "Janosch Fuchs, Rin Saito, Tatsuhiro Suga, Takahiro Suzuki, Yuma Tamura",
+      "links": [
+        {
+          "text": "Proceedings of ISAAC 2025, to appear."
+        }
+      ],
+      "highlightText": [
+        "Rin Saito",
+        "ISAAC 2025"
+      ]
+    },
+    {
+      "title": "Basis Sequence Reconfiguration in the Union of Matroids",
       "author": "Tesshu Hanaka, Yuni Iwamasa, Yasuaki Kobayashi, Yuto Okada, Rin Saito",
       "links": [
         {
