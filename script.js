@@ -1,4 +1,4 @@
-let currentLang = "ja";
+let currentLang = "en";
 
 // イベント設定
 window.addEventListener("DOMContentLoaded", () => {
