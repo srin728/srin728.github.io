@@ -13,11 +13,38 @@
   "publications": "査読付き論文",
   "publications_list": [
     {
+      "title": "Solution Discovery for Vertex Cover, Independent Set, Dominating Set, and Feedback Vertex Set",
+      "author": "Rin Saito, Anouk Sommer, Tatsuhiro Suga, Takahiro Suzuki and Yuma Tamura",
+      "links": [
+        {
+          "text": "Proceedings of SOFSEM 2026, to appear."
+        }
+      ],
+      "highlightText": [
+        "Rin Saito",
+        "SOFSEM 2026"
+      ]
+    },
+    {
+      "title": "Parameterized Complexity of Reconfiguring Vertex-Disjoint Shortest Paths",
+      "author": "Rin Saito, Takehiro Ito",
+      "links": [
+        {
+          "text": "Proceedings of WALCOM 2026, to appear."
+        }
+      ],
+      "highlightText": [
+        "Rin Saito",
+        "WALCOM 2026"
+      ]
+    },
+    {
       "title": "Coloring Reconfiguration under Color Swapping",
       "author": "Janosch Fuchs, Rin Saito, Tatsuhiro Suga, Takahiro Suzuki, Yuma Tamura",
       "links": [
         {
-          "text": "Proceedings of ISAAC 2025, to appear."
+          "text": "Proceedings of ISAAC 2025, to appear.",
+          "arxiv_id": "https://arxiv.org/abs/2511.06473"
         }
       ],
       "highlightText": [
@@ -66,7 +93,7 @@
       "author": "Tatsuya Gima, Yuni Iwamasa, Yasuaki Kobayashi, Kazuhiro Kurita, Yota Otachi, Rin Saito",
       "links": [
         {
-          "arxiv_id": "10.48550/ARXIV.2412.04016"
+          "arxiv_id": "https://arxiv.org/abs/2412.04016"
         }
       ],
       "highlightText": [
