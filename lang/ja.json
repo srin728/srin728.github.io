@@ -228,7 +228,7 @@
       "type": "international_non_refereed",
       "links": [
         {
-          "text": "The 5th International Workshop on Combinatorial Reconfiguration (CoRe 2025), Fukuoka, Japan, October 7-11, 2024."
+          "text": "The 5th International Workshop on Combinatorial Reconfiguration (CoRe 2024), Fukuoka, Japan, October 7-11, 2024."
         }
       ],
       "highlightText": [
@@ -242,7 +242,7 @@
       "type": "international_non_refereed",
       "links": [
         {
-          "text": "The 35th International Symposium on Algorithms and Computation (ISAAC 2025), Sydney, Australia, December 8-11, 2024."
+          "text": "The 35th International Symposium on Algorithms and Computation (ISAAC 2024), Sydney, Australia, December 8-11, 2024."
         }
       ],
       "highlightText": [
@@ -275,6 +275,20 @@
       ],
       "highlightText": [
         "斉藤 凜"
+      ]
+    },
+    {
+      "title": "Coloring Reconfiguration under Color Swapping",
+      "author": "Janosch Fuchs, Rin Saito, Tatsuhiro Suga, Takahiro Suzuki, Yuma Tamura",
+      "type": "international_non_refereed",
+      "links": [
+        {
+          "text": "The 36th International Symposium on Algorithms and Computation (ISAAC 2025), Tainan, Taiwan, December 7-10, 2025."
+        }
+      ],
+      "highlightText": [
+        "Rin Saito",
+        "ISAAC 2025"
       ]
     }
   ],
