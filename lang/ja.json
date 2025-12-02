@@ -17,7 +17,8 @@
       "author": "Rin Saito, Anouk Sommer, Tatsuhiro Suga, Takahiro Suzuki and Yuma Tamura",
       "links": [
         {
-          "text": "Proceedings of SOFSEM 2026, to appear."
+          "text": "Proceedings of SOFSEM 2026, to appear.",
+          "arxiv_id": "2511.23012"
         }
       ],
       "highlightText": [
@@ -43,7 +44,8 @@
       "author": "Janosch Fuchs, Rin Saito, Tatsuhiro Suga, Takahiro Suzuki, Yuma Tamura",
       "links": [
         {
-          "text": "Proceedings of ISAAC 2025, to appear.",
+          "text": "Proceedings of ISAAC 2025, LIPIcs, vol. 359, 33:1-33:21, 2025.",
+          "doi_id": "10.4230/LIPIcs.ISAAC.2025.33",
           "arxiv_id": "2511.06473"
         }
       ],
