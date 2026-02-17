@@ -17,7 +17,8 @@
       "author": "Rin Saito, Anouk Sommer, Tatsuhiro Suga, Takahiro Suzuki and Yuma Tamura",
       "links": [
         {
-          "text": "Proceedings of SOFSEM 2026, to appear.",
+          "text": "Proceedings of SOFSEM 2026, LNCS, Vol. 16448, pp. 432-446, 2026.",
+          "doi_id": "10.1007/978-3-032-17801-5_32",
           "arxiv_id": "2511.23012"
         }
       ],
@@ -31,7 +32,8 @@
       "author": "Rin Saito, Takehiro Ito",
       "links": [
         {
-          "text": "Proceedings of WALCOM 2026, to appear."
+          "text": "Proceedings of WALCOM 2026, LNCS, Vol. 16444, pp. 432-447, 2026.",
+          "doi_id": "10.1007/978-981-95-7127-7_29"
         }
       ],
       "highlightText": [
