@@ -1,4 +1,4 @@
-// ===== 記事ファイル一覧（ここだけ管理すればOK）=====
+// ===== 記事 =====
 const articleFiles = [
     "articles/introduction.md",
     "articles/study_notes.md"
@@ -7,49 +7,32 @@ const articleFiles = [
 let articles = [];
 let currentTag = null;
 
-// ===== URL操作 =====
+// ===== URL =====
 function getTagFromURL() {
-    const params = new URLSearchParams(window.location.search);
-    return params.get("tag");
+    return new URLSearchParams(window.location.search).get("tag");
 }
 
 function setTagToURL(tag) {
     const url = new URL(window.location);
-
-    if (tag === null) {
-        url.searchParams.delete("tag");
-    } else {
-        url.searchParams.set("tag", tag);
-    }
-
+    tag ? url.searchParams.set("tag", tag) : url.searchParams.delete("tag");
     history.pushState({}, "", url);
 }
 
-// ===== front matter パーサ =====
+// ===== front matter =====
 function parseFrontMatter(md) {
     const match = md.match(/^---\n([\s\S]*?)\n---/);
     if (!match) return { meta: {}, content: md };
 
-    const metaText = match[1];
-    const content = md.slice(match[0].length);
-
     const meta = {};
-
-    metaText.split("\n").forEach(line => {
-        const [key, value] = line.split(":").map(s => s.trim());
-        if (!key) return;
-
-        if (value.startsWith("[")) {
-            meta[key] = value
-                .replace(/[\[\]]/g, "")
-                .split(",")
-                .map(v => v.trim());
-        } else {
-            meta[key] = value;
-        }
+    match[1].split("\n").forEach(line => {
+        const [k, v] = line.split(":").map(s => s.trim());
+        if (!k) return;
+        meta[k] = v.startsWith("[")
+            ? v.replace(/[\[\]]/g, "").split(",").map(x => x.trim())
+            : v;
     });
 
-    return { meta, content };
+    return { meta, content: md.slice(match[0].length) };
 }
 
 // ===== 初期化 =====
@@ -58,11 +41,25 @@ window.addEventListener("DOMContentLoaded", async () => {
     const list = document.getElementById("articleList");
     const tagList = document.getElementById("tagList");
     const content = document.getElementById("articleContent");
+    const sidebar = document.getElementById("sidebar");
+    const hamburger = document.getElementById("hamburger");
 
-    // ===== 全記事読み込み =====
+    // ===== ハンバーガー制御 =====
+    hamburger.onclick = () => {
+        sidebar.classList.toggle("open");
+    };
+
+    // 外側クリックで閉じる
+    document.addEventListener("click", (e) => {
+        if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+            sidebar.classList.remove("open");
+        }
+    });
+
+    // ===== 記事ロード =====
     const promises = articleFiles.map(file =>
         fetch(file)
-            .then(res => res.text())
+            .then(r => r.text())
             .then(md => {
                 const { meta } = parseFrontMatter(md);
                 return {
@@ -75,37 +72,30 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     articles = await Promise.all(promises);
 
-    // ===== タグ集合 =====
     const allTags = new Set();
-    articles.forEach(a => a.tags.forEach(tag => allTags.add(tag)));
+    articles.forEach(a => a.tags.forEach(t => allTags.add(t)));
 
-    // ===== URLからタグ取得 =====
     currentTag = getTagFromURL();
     if (!allTags.has(currentTag)) currentTag = null;
 
-    // ===== タグ描画 =====
     function renderTags() {
         tagList.innerHTML = "";
-
         createTag("すべて", null);
-
-        allTags.forEach(tag => {
-            createTag(tag, tag);
-        });
+        allTags.forEach(t => createTag(t, t));
     }
 
-    function createTag(label, tagValue) {
+    function createTag(label, value) {
         const li = document.createElement("li");
         const a = document.createElement("a");
 
         a.textContent = label;
         a.href = "#";
-
         a.onclick = () => {
-            currentTag = tagValue;
-            setTagToURL(tagValue);
+            currentTag = value;
+            setTagToURL(value);
             renderArticles();
             highlightTag();
+            sidebar.classList.remove("open"); // モバイルで閉じる
         };
 
         li.appendChild(a);
@@ -113,15 +103,12 @@ window.addEventListener("DOMContentLoaded", async () => {
     }
 
     function highlightTag() {
-        const links = tagList.querySelectorAll("a");
-
-        links.forEach(link => {
-            const tag = link.textContent === "すべて" ? null : link.textContent;
-            link.style.fontWeight = (tag === currentTag) ? "bold" : "normal";
+        tagList.querySelectorAll("a").forEach(a => {
+            const t = a.textContent === "すべて" ? null : a.textContent;
+            a.style.fontWeight = (t === currentTag) ? "bold" : "normal";
         });
     }
 
-    // ===== 記事一覧 =====
     function renderArticles() {
         list.innerHTML = "";
 
@@ -129,33 +116,35 @@ window.addEventListener("DOMContentLoaded", async () => {
             ? articles
             : articles.filter(a => a.tags.includes(currentTag));
 
-        filtered.forEach(article => {
+        filtered.forEach(a => {
             const li = document.createElement("li");
-            const a = document.createElement("a");
+            const link = document.createElement("a");
 
-            a.textContent = article.title;
-            a.href = "#";
-            a.onclick = () => loadArticle(article.file);
+            link.textContent = a.title;
+            link.href = "#";
+            link.onclick = () => {
+                loadArticle(a.file);
+                sidebar.classList.remove("open");
+            };
 
-            li.appendChild(a);
+            li.appendChild(link);
             list.appendChild(li);
         });
     }
 
-    // ===== 記事表示 =====
     function loadArticle(file) {
         fetch(file)
-            .then(res => res.text())
+            .then(r => r.text())
             .then(md => {
                 const { meta, content: body } = parseFrontMatter(md);
 
-                const tagHTML = (meta.tags || [])
-                    .map(tag => `<span class="tag">${tag}</span>`)
+                const tags = (meta.tags || [])
+                    .map(t => `<span class="tag">${t}</span>`)
                     .join(" ");
 
                 content.innerHTML = `
                     <h1>${meta.title || ""}</h1>
-                    <div class="tags">${tagHTML}</div>
+                    <div class="tags">${tags}</div>
                     ${marked.parse(body)}
                 `;
 
@@ -163,22 +152,18 @@ window.addEventListener("DOMContentLoaded", async () => {
             });
     }
 
-    // ===== 初期描画 =====
     renderTags();
     renderArticles();
     highlightTag();
 
-    // 初期記事
     const initial = articles.find(a =>
         currentTag === null || a.tags.includes(currentTag)
     );
     if (initial) loadArticle(initial.file);
 
-    // 戻るボタン対応
     window.addEventListener("popstate", () => {
         currentTag = getTagFromURL();
         renderArticles();
         highlightTag();
     });
-
 });
