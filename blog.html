@@ -7,30 +7,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="blog.css">
 
-  <!-- Markdown -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-  <!-- MathJax -->
   <script>
     MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
         displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        processEscapes: true,
       },
     };
   </script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-  <!-- JS -->
   <script src="blog.js" defer></script>
 </head>
 
 <body>
+  <!-- ハンバーガーボタン -->
+  <div id="hamburger">☰</div>
+
   <div class="container">
 
-    <!-- サイドバー -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
       <h2>タグ</h2>
       <ul id="tagList"></ul>
 
@@ -42,7 +40,6 @@
       </footer>
     </aside>
 
-    <!-- メイン -->
     <main class="content">
       <div id="articleContent">
         <p>記事を選択してください。</p>
