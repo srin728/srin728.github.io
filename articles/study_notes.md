@@ -1,3 +1,8 @@
+---
+title: 勉強メモ
+tags: [勉強, メモ]
+---
+
 テスト用の文章です
 
 ## LP Formulation of Minimum Vertex Cover
