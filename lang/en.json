@@ -1,6 +1,6 @@
 {
   "name": "Rin Saito",
-  "affiliation": "a second-year doctoral student at Tohoku University",
+  "affiliation": "a third-year doctoral student at Tohoku University",
   "email": "Email: rin.saito [ at ] dc.tohoku.ac.jp",
   "address": "Aramaki aza Aoba 6-3-09, Aoba-ku Sendai-city Miyagi-pref. 980-8579, Japan",
   "biography": "C.V.",
@@ -293,6 +293,34 @@
       "highlightText": [
         "Rin Saito",
         "ISAAC 2025"
+      ]
+    },
+    {
+      "title": "Parameterized Complexity of Reconfiguring Vertex-Disjoint Shortest Paths",
+      "author": "Rin Saito, Takehiro Ito",
+      "type": "international_non_refereed",
+      "links": [
+        {
+          "text": "The 20th International Conference and Workshops on Algorithms and Computation (WALCOM 2026),Perugia, Italy, March 4-6, 2026."
+        }
+      ],
+      "highlightText": [
+        "Rin Saito",
+        "WALCOM 2026"
+      ]
+    },
+    {
+      "title": "Graph Algorithmic Developments in Combinatorial Reconfiguration",
+      "author": "Rin Saito",
+      "type": "international_non_refereed",
+      "links": [
+        {
+          "text": "NYCU Theory Day, Hsinchu, Taiwan, April 21–23,2026"
+        }
+      ],
+      "highlightText": [
+        "Rin Saito",
+        "NYCU Theory Day"
       ]
     }
   ],
