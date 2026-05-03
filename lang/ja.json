@@ -12,6 +12,20 @@
   "research_areas_content": "組合せ遷移，グラフアルゴリズム，パラメータ化計算量に興味があります．",
   "publications": "査読付き論文",
   "publications_list": [
+      {
+      "title": "On (In)approximability of MaxMin Independent Set Reconfiguration",
+      "author": "Hung P. Hoang, Naoto Ohsaka, Rin Saito, Yuma Tamura",
+      "links": [
+        {
+          "text": "To appear at ICALP 2026",
+          "arxiv_id": "2604.26714"
+        }
+      ],
+      "highlightText": [
+        "Rin Saito",
+        "ICALP 2026"
+      ]
+    },
     {
       "title": "Solution Discovery for Vertex Cover, Independent Set, Dominating Set, and Feedback Vertex Set",
       "author": "Rin Saito, Anouk Sommer, Tatsuhiro Suga, Takahiro Suzuki, Yuma Tamura",
