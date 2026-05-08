@@ -12,6 +12,19 @@
   "research_areas_content": "Graph Algorithms, Parameterized Complexity, Combinatorial Reconfiguration",
   "publications": "Refereed Papers",
   "publications_list": [
+      {
+      "title": "Parameterized Complexity of Odd Domination and its Generalization",
+      "author": "Toranosuke Kokai, Rin Saito, Tatsuhiro Suga, Takahiro Suzuki, Yuma Tamura",
+      "links": [
+        {
+          "text": "To appear at COCOON 2026"
+        }
+      ],
+      "highlightText": [
+        "Rin Saito",
+        "COCOON 2026"
+      ]
+    },
     {
       "title": "On (In)approximability of MaxMin Independent Set Reconfiguration",
       "author": "Hung P. Hoang, Naoto Ohsaka, Rin Saito, Yuma Tamura",
