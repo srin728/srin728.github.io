@@ -17,7 +17,9 @@
       "author": "Toranosuke Kokai, Rin Saito, Tatsuhiro Suga, Takahiro Suzuki, Yuma Tamura",
       "links": [
         {
-          "text": "To appear at COCOON 2026"
+          "text": "Proceedings of COCOON 2026, LNCS, Vol. 16835, pp. 163-176, 2026.",
+          "doi_id": "10.1007/978-981-92-3309-0_13",
+          "arxiv_id": "2607.19134"
         }
       ],
       "highlightText": [
@@ -30,8 +32,9 @@
       "author": "Hung P. Hoang, Naoto Ohsaka, Rin Saito, Yuma Tamura",
       "links": [
         {
-          "text": "To appear at ICALP 2026",
-          "arxiv_id": "2604.26714"
+          "text": "Proceedings of ICALP 2026, LIPIcs, vol. 374, 108:1-108:16, 2026.",
+          "doi_id": "10.4230/LIPIcs.ICALP.2026.108",
+          "arxiv_id": "2511.23012"
         }
       ],
       "highlightText": [
