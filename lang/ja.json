@@ -352,6 +352,34 @@
         "Rin Saito",
         "NYCU Theory Day"
       ]
+    },
+    {
+      "title": "k-Product Lists for (Generalized) Feedback Vertex Sets: A Tool for Designing FPT Algorithms",
+      "author": "Rin Saito, Yuma Tamura",
+      "type": "international_non_refereed",
+      "links": [
+        {
+          "text": "The 17th Annual Meeting of Asian Association for Algorithms and Computation (AAAC 2026), Qingdao, China, May 23-24, 2026"
+        }
+      ],
+      "highlightText": [
+        "Rin Saito",
+        "AAAC 2026"
+      ]
+    },
+    {
+      "title": "Parameterized Complexity of Odd Domination and its Generalization",
+      "author": "Toranosuke Kokai, Rin Saito, Tatsuhiro Suga, Takahiro Suzuki, Yuma Tamura",
+      "type": "international_non_refereed",
+      "links": [
+        {
+          "text": "The 32nd International Computing and Combinatorics Conference (COCOON 2026), Singapore, Singapore, July 23-25, 2026"
+        }
+      ],
+      "highlightText": [
+        "Rin Saito",
+        "COCOON 2026"
+      ]
     }
   ],
   "awards": "受賞歴",
