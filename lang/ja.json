@@ -92,7 +92,8 @@
       "links": [
         {
           "text": "Proceedings of ISAAC 2024, LIPIcs, vol. 322, 38:1-38:16, 2024.",
-          "doi_id": "10.4230/LIPICS.ISAAC.2024.38"
+          "doi_id": "10.4230/LIPICS.ISAAC.2024.38",
+          "arxiv_id": "2409.07848"
         }
       ],
       "highlightText": [
@@ -290,7 +291,7 @@
       "type": "international_non_refereed",
       "links": [
         {
-          "text": "The 16th Annual Meeting of Asian Association for Algorithms and Computation (AAAC 2025), Hong Kong, China, May 31 and June 1, 2025"
+          "text": "The 16th Annual Meeting of Asian Association for Algorithms and Computation (AAAC 2025), Hong Kong, China, May 31 and June 1, 2025."
         }
       ],
       "highlightText": [
@@ -345,7 +346,7 @@
       "type": "international_non_refereed",
       "links": [
         {
-          "text": "NYCU Theory Day, Hsinchu, Taiwan, April 21–23,2026"
+          "text": "NYCU Theory Day, Hsinchu, Taiwan, April 21–23, 2026."
         }
       ],
       "highlightText": [
@@ -359,7 +360,7 @@
       "type": "international_non_refereed",
       "links": [
         {
-          "text": "The 17th Annual Meeting of Asian Association for Algorithms and Computation (AAAC 2026), Qingdao, China, May 23-24, 2026"
+          "text": "The 17th Annual Meeting of Asian Association for Algorithms and Computation (AAAC 2026), Qingdao, China, May 23-24, 2026."
         }
       ],
       "highlightText": [
@@ -373,7 +374,7 @@
       "type": "international_non_refereed",
       "links": [
         {
-          "text": "The 32nd International Computing and Combinatorics Conference (COCOON 2026), Singapore, Singapore, July 23-25, 2026"
+          "text": "The 32nd International Computing and Combinatorics Conference (COCOON 2026), Singapore, Singapore, July 23-25, 2026."
         }
       ],
       "highlightText": [
