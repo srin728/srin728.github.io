@@ -12,6 +12,19 @@
   "research_areas_content": "組合せ遷移，グラフアルゴリズム，パラメータ化計算量に興味があります．",
   "publications": "査読付き論文",
   "publications_list": [
+      {
+      "title": "$k$-Product Lists for (Generalized) Feedback Vertex Sets: A Tool for Designing FPT Algorithms",
+      "author": "Rin Saito, Yuma Tamura",
+      "links": [
+        {
+          "text": "To appear in IPEC 2026."
+        }
+      ],
+      "highlightText": [
+        "Rin Saito",
+        "IPEC 2026"
+      ]
+    },
     {
       "title": "Parameterized Complexity of Odd Domination and its Generalization",
       "author": "Toranosuke Kokai, Rin Saito, Tatsuhiro Suga, Takahiro Suzuki, Yuma Tamura",
