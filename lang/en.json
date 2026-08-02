@@ -13,6 +13,19 @@
   "publications": "Refereed Papers",
   "publications_list": [
       {
+      "title": "$k$-Product Lists for (Generalized) Feedback Vertex Sets: A Tool for Designing FPT Algorithms",
+      "author": "Rin Saito, Yuma Tamura",
+      "links": [
+        {
+          "text": "To appear in IPEC 2026."
+        }
+      ],
+      "highlightText": [
+        "Rin Saito",
+        "IPEC 2026"
+      ]
+    },
+    {
       "title": "Parameterized Complexity of Odd Domination and its Generalization",
       "author": "Toranosuke Kokai, Rin Saito, Tatsuhiro Suga, Takahiro Suzuki, Yuma Tamura",
       "links": [
