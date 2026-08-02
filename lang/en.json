@@ -5,14 +5,16 @@
   "address": "Aramaki aza Aoba 6-3-09, Aoba-ku Sendai-city Miyagi-pref. 980-8579, Japan",
   "biography": "C.V.",
   "biography_content": [
-    "March 2022,  Bachelor of DepEngineering, Tohoku University",
-    "March 2024, Master of Information Sciences, Tohoku University"
+    "April 2018 – March 2022: Bachelor of Engineering, Tohoku University",
+    "April 2022 – March 2024: Master of Information Sciences, Tohoku University",
+    "April 2024 – Present: Ph.D. Student in Information Sciences, Tohoku University",
+    "April 2026 – Present: JSPS Research Fellow (DC2)"
   ],
   "research_areas": "Research Interests",
   "research_areas_content": "Graph Algorithms, Parameterized Complexity, Combinatorial Reconfiguration",
   "publications": "Refereed Papers",
   "publications_list": [
-      {
+    {
       "title": "$k$-Product Lists for (Generalized) Feedback Vertex Sets: A Tool for Designing FPT Algorithms",
       "author": "Rin Saito, Yuma Tamura",
       "links": [
@@ -425,5 +427,5 @@
       ]
     }
   ],
-  "links": "Links"
+  "misc": "Misc"
 }

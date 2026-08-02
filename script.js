@@ -52,6 +52,9 @@ async function loadLanguage(lang) {
     displayJsonData(dict["preprints_list"], "preprintsList", "preprints");
     displayJsonData(dict["awards_list"], "awardsList", "awards");
     displayPresentations(dict);
+    if (window.MathJax) {
+      await MathJax.typesetPromise();
+    }
   } catch (error) {
     console.error("言語ファイルの読み込みに失敗:", error);
   }
