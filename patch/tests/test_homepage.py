@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 import unittest
@@ -68,6 +69,31 @@ class HomepageStaticBuildTest(unittest.TestCase):
             parser.feed((ROOT / name).read_text(encoding="utf-8"))
             self.assertTrue(parser.hash_hrefs)
             self.assertTrue(set(parser.hash_hrefs).issubset(parser.ids))
+
+    def _section(self, html, section_id):
+        match = re.search(
+            rf'<section id="{re.escape(section_id)}".*?</section>',
+            html,
+            re.DOTALL,
+        )
+        self.assertIsNotNone(match, section_id)
+        return match.group(0)
+
+    def test_preprint_and_award_buttons_are_inline(self):
+        en = (ROOT / "index.html").read_text(encoding="utf-8")
+        for section_id in ("preprints", "awards"):
+            section = self._section(en, section_id)
+            linked_items = re.findall(r"<li>(.*?custom-button.*?)</li>", section, re.DOTALL)
+            self.assertTrue(linked_items, section_id)
+            for item_html in linked_items:
+                self.assertNotIn("<br>", item_html, section_id)
+
+    def test_publication_venue_links_remain_on_next_line(self):
+        en = (ROOT / "index.html").read_text(encoding="utf-8")
+        section = self._section(en, "publications")
+        linked_items = re.findall(r"<li>(.*?custom-button.*?)</li>", section, re.DOTALL)
+        self.assertTrue(linked_items)
+        self.assertTrue(any("<br>" in item_html for item_html in linked_items))
 
 
 if __name__ == "__main__":

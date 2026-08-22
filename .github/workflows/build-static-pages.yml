@@ -1,0 +1,51 @@
+name: Build static pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: static-pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build homepage
+        run: python scripts/build_homepage.py
+
+      - name: Build blog
+        run: python scripts/build_blog.py
+
+      - name: Run tests
+        run: python -m unittest discover -s tests
+
+      - name: Commit generated pages
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "Generated pages are already up to date."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add index.html ja.html blog.html notes/
+          git commit -m "Rebuild static pages [skip ci]"
+          git push

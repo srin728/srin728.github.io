@@ -10,8 +10,6 @@ from pathlib import Path
 from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[1]
-LANG_DIR = ROOT / "lang"
-CONFIG_PATH = ROOT / "data" / "homepage.json"
 
 
 def load_json(path: Path):
@@ -72,27 +70,32 @@ def render_links(links, highlights) -> str:
     return "<br>".join(rows)
 
 
-def render_item(item: dict) -> str:
+def render_item(item: dict, *, inline_links: bool = False) -> str:
     highlights = item.get("highlightText") or []
     if not isinstance(highlights, list):
         highlights = [highlights]
     author = highlight_text(item.get("author", ""), highlights)
     title = highlight_text(item.get("title", ""), highlights)
     links = render_links(item.get("links"), highlights)
+
     body = ""
     if author:
         body += author + ": "
     body += title
     if links:
-        body += "<br>" + links
+        body += (" " if inline_links else "<br>") + links
     return f"<li>{body}</li>"
 
 
-def render_ordered_list(items, reverse_items: bool = False) -> str:
+def render_ordered_list(items, reverse_items: bool = False, *, inline_links: bool = False) -> str:
     rows = list(items or [])
     if reverse_items:
         rows.reverse()
-    return '<ol reversed>\n' + "\n".join(render_item(x) for x in rows) + "\n</ol>"
+    return (
+        '<ol reversed>\n'
+        + "\n".join(render_item(x, inline_links=inline_links) for x in rows)
+        + "\n</ol>"
+    )
 
 
 def render_presentations(data: dict, lang: str) -> str:
@@ -124,8 +127,8 @@ def render_presentations(data: dict, lang: str) -> str:
 
 def render_biography(value) -> str:
     if isinstance(value, list):
-        # Translation files are repository-controlled input.  A small amount of
-        # inline HTML (currently a grant link) is intentionally supported here.
+        # Repository-controlled input. A small amount of inline HTML
+        # (currently a grant link) is intentionally supported here.
         return "<ul>\n" + "\n".join(f"<li>{str(x)}</li>" for x in value) + "\n</ul>"
     return f"<p>{esc(value)}</p>"
 
@@ -150,7 +153,6 @@ def page_description(lang: str) -> str:
 
 def build_page(data: dict, config: dict, lang: str) -> str:
     is_ja = lang == "ja"
-    output_name = "ja.html" if is_ja else "index.html"
     other_href = "index.html" if is_ja else "ja.html"
     other_label = "English" if is_ja else "日本語"
     other_lang = "en" if is_ja else "ja"
@@ -247,7 +249,7 @@ def build_page(data: dict, config: dict, lang: str) -> str:
 
       <section id="preprints" class="section">
         <h2>{esc(preprints_title)}</h2>
-        {render_ordered_list(data.get('preprints_list') or [])}
+        {render_ordered_list(data.get('preprints_list') or [], inline_links=True)}
       </section>
 
       <section id="presentations" class="section">
@@ -257,7 +259,7 @@ def build_page(data: dict, config: dict, lang: str) -> str:
 
       <section id="awards" class="section">
         <h2>{esc(awards_title)}</h2>
-        {render_ordered_list(data.get('awards_list') or [])}
+        {render_ordered_list(data.get('awards_list') or [], inline_links=True)}
       </section>
 
       <section id="misc" class="section">
