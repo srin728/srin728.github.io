@@ -1,169 +1,211 @@
-// ===== 記事 =====
 const articleFiles = [
-    "articles/introduction.md",
-    "articles/study_notes.md"
+  "articles/introduction.md",
+  "articles/study_notes.md"
 ];
 
 let articles = [];
 let currentTag = null;
+let currentArticle = null;
 
-// ===== URL =====
 function getTagFromURL() {
-    return new URLSearchParams(window.location.search).get("tag");
+  return new URLSearchParams(window.location.search).get("tag");
 }
 
 function setTagToURL(tag) {
-    const url = new URL(window.location);
-    tag ? url.searchParams.set("tag", tag) : url.searchParams.delete("tag");
-    history.pushState({}, "", url);
+  const url = new URL(window.location.href);
+  if (tag) url.searchParams.set("tag", tag);
+  else url.searchParams.delete("tag");
+  history.pushState({}, "", url);
 }
 
-// ===== front matter =====
 function parseFrontMatter(md) {
-    const match = md.match(/^---\n([\s\S]*?)\n---/);
-    if (!match) return { meta: {}, content: md };
+  const normalized = md.replace(/\r\n?/g, "\n");
+  const match = normalized.match(/^---\n([\s\S]*?)\n---(?:\n|$)/);
+  if (!match) return { meta: {}, content: normalized };
 
-    const meta = {};
-    match[1].split("\n").forEach(line => {
-        const [k, v] = line.split(":").map(s => s.trim());
-        if (!k) return;
-        meta[k] = v.startsWith("[")
-            ? v.replace(/[\[\]]/g, "").split(",").map(x => x.trim())
-            : v;
-    });
+  const meta = {};
+  match[1].split("\n").forEach(line => {
+    const separator = line.indexOf(":");
+    if (separator < 0) return;
 
-    return { meta, content: md.slice(match[0].length) };
+    const key = line.slice(0, separator).trim();
+    const value = line.slice(separator + 1).trim();
+    if (!key) return;
+
+    meta[key] = value.startsWith("[") && value.endsWith("]")
+      ? value.slice(1, -1).split(",").map(x => x.trim()).filter(Boolean)
+      : value;
+  });
+
+  return { meta, content: normalized.slice(match[0].length) };
 }
 
-// ===== 初期化 =====
+async function fetchText(file) {
+  const response = await fetch(file);
+  if (!response.ok) throw new Error(`${file}: HTTP ${response.status}`);
+  return response.text();
+}
+
 window.addEventListener("DOMContentLoaded", async () => {
+  const articleList = document.getElementById("articleList");
+  const tagList = document.getElementById("tagList");
+  const content = document.getElementById("articleContent");
+  const sidebar = document.getElementById("sidebar");
+  const hamburger = document.getElementById("hamburger");
 
-    const list = document.getElementById("articleList");
-    const tagList = document.getElementById("tagList");
-    const content = document.getElementById("articleContent");
-    const sidebar = document.getElementById("sidebar");
-    const hamburger = document.getElementById("hamburger");
+  if (!articleList || !tagList || !content || !sidebar || !hamburger) return;
 
-    // ===== ハンバーガー制御 =====
-    hamburger.onclick = () => {
-        sidebar.classList.toggle("open");
-    };
+  const closeSidebar = () => {
+    sidebar.classList.remove("open");
+    hamburger.setAttribute("aria-expanded", "false");
+    hamburger.setAttribute("aria-label", "メニューを開く");
+  };
 
-    // 外側クリックで閉じる
-    document.addEventListener("click", (e) => {
-        if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
-            sidebar.classList.remove("open");
-        }
+  hamburger.addEventListener("click", event => {
+    event.stopPropagation();
+    const isOpen = sidebar.classList.toggle("open");
+    hamburger.setAttribute("aria-expanded", String(isOpen));
+    hamburger.setAttribute("aria-label", isOpen ? "メニューを閉じる" : "メニューを開く");
+  });
+
+  document.addEventListener("click", event => {
+    if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
+      closeSidebar();
+    }
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") closeSidebar();
+  });
+
+  try {
+    articles = await Promise.all(articleFiles.map(async file => {
+      const md = await fetchText(file);
+      const { meta } = parseFrontMatter(md);
+      return {
+        title: meta.title || file,
+        tags: Array.isArray(meta.tags) ? meta.tags : [],
+        file
+      };
+    }));
+  } catch (error) {
+    console.error("記事一覧の読み込みに失敗しました:", error);
+    content.textContent = "記事の読み込みに失敗しました。ページを再読み込みしてください。";
+    return;
+  }
+
+  const allTags = [...new Set(articles.flatMap(article => article.tags))]
+    .sort((a, b) => a.localeCompare(b, "ja"));
+
+  currentTag = getTagFromURL();
+  if (!allTags.includes(currentTag)) currentTag = null;
+
+  function renderTags() {
+    tagList.replaceChildren();
+    createTagButton("すべて", null);
+    allTags.forEach(tag => createTagButton(tag, tag));
+  }
+
+  function createTagButton(label, value) {
+    const li = document.createElement("li");
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "sidebar-link";
+    button.textContent = label;
+    button.setAttribute("aria-pressed", String(value === currentTag));
+    button.addEventListener("click", () => {
+      currentTag = value;
+      setTagToURL(value);
+      renderTags();
+      renderArticles();
+      closeSidebar();
     });
+    li.appendChild(button);
+    tagList.appendChild(li);
+  }
 
-    // ===== 記事ロード =====
-    const promises = articleFiles.map(file =>
-        fetch(file)
-            .then(r => r.text())
-            .then(md => {
-                const { meta } = parseFrontMatter(md);
-                return {
-                    title: meta.title || file,
-                    tags: meta.tags || [],
-                    file
-                };
-            })
-    );
+  function renderArticles() {
+    articleList.replaceChildren();
 
-    articles = await Promise.all(promises);
+    const filtered = currentTag === null
+      ? articles
+      : articles.filter(article => article.tags.includes(currentTag));
 
-    const allTags = new Set();
-    articles.forEach(a => a.tags.forEach(t => allTags.add(t)));
+    filtered.forEach(article => {
+      const li = document.createElement("li");
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "sidebar-link";
+      button.textContent = article.title;
+      if (article.file === currentArticle) button.setAttribute("aria-current", "true");
+      button.addEventListener("click", async () => {
+        await loadArticle(article.file);
+        renderArticles();
+        closeSidebar();
+      });
+      li.appendChild(button);
+      articleList.appendChild(li);
+    });
+  }
 
-    currentTag = getTagFromURL();
-    if (!allTags.has(currentTag)) currentTag = null;
+  async function loadArticle(file) {
+    try {
+      const md = await fetchText(file);
+      const { meta, content: body } = parseFrontMatter(md);
+      currentArticle = file;
 
-    function renderTags() {
-        tagList.innerHTML = "";
-        createTag("すべて", null);
-        allTags.forEach(t => createTag(t, t));
+      const fragment = document.createDocumentFragment();
+      const heading = document.createElement("h1");
+      heading.textContent = meta.title || "";
+      fragment.appendChild(heading);
+
+      const tags = document.createElement("div");
+      tags.className = "tags";
+      (Array.isArray(meta.tags) ? meta.tags : []).forEach(tagName => {
+        const tag = document.createElement("span");
+        tag.className = "tag";
+        tag.textContent = tagName;
+        tags.appendChild(tag);
+      });
+      fragment.appendChild(tags);
+
+      const articleBody = document.createElement("div");
+      if (window.marked && window.DOMPurify) {
+        articleBody.innerHTML = window.DOMPurify.sanitize(window.marked.parse(body));
+      } else {
+        const pre = document.createElement("pre");
+        pre.textContent = body;
+        articleBody.appendChild(pre);
+      }
+      fragment.appendChild(articleBody);
+
+      content.replaceChildren(fragment);
+      document.title = meta.title ? `${meta.title} — Rin's Notes` : "Rin's Notes";
+
+      if (typeof window.MathJax?.typesetPromise === "function") {
+        await window.MathJax.typesetPromise([content]);
+      }
+    } catch (error) {
+      console.error("記事の読み込みに失敗しました:", error);
+      content.textContent = "記事の読み込みに失敗しました。";
     }
+  }
 
-    function createTag(label, value) {
-        const li = document.createElement("li");
-        const a = document.createElement("a");
+  renderTags();
+  renderArticles();
 
-        a.textContent = label;
-        a.href = "#";
-        a.onclick = () => {
-            currentTag = value;
-            setTagToURL(value);
-            renderArticles();
-            highlightTag();
-            sidebar.classList.remove("open"); // モバイルで閉じる
-        };
+  const initial = articles.find(article =>
+    currentTag === null || article.tags.includes(currentTag)
+  );
+  if (initial) {
+    await loadArticle(initial.file);
+    renderArticles();
+  }
 
-        li.appendChild(a);
-        tagList.appendChild(li);
-    }
-
-    function highlightTag() {
-        tagList.querySelectorAll("a").forEach(a => {
-            const t = a.textContent === "すべて" ? null : a.textContent;
-            a.style.fontWeight = (t === currentTag) ? "bold" : "normal";
-        });
-    }
-
-    function renderArticles() {
-        list.innerHTML = "";
-
-        const filtered = currentTag === null
-            ? articles
-            : articles.filter(a => a.tags.includes(currentTag));
-
-        filtered.forEach(a => {
-            const li = document.createElement("li");
-            const link = document.createElement("a");
-
-            link.textContent = a.title;
-            link.href = "#";
-            link.onclick = () => {
-                loadArticle(a.file);
-                sidebar.classList.remove("open");
-            };
-
-            li.appendChild(link);
-            list.appendChild(li);
-        });
-    }
-
-    function loadArticle(file) {
-        fetch(file)
-            .then(r => r.text())
-            .then(md => {
-                const { meta, content: body } = parseFrontMatter(md);
-
-                const tags = (meta.tags || [])
-                    .map(t => `<span class="tag">${t}</span>`)
-                    .join(" ");
-
-                content.innerHTML = `
-                    <h1>${meta.title || ""}</h1>
-                    <div class="tags">${tags}</div>
-                    ${marked.parse(body)}
-                `;
-
-                if (window.MathJax) MathJax.typesetPromise();
-            });
-    }
-
+  window.addEventListener("popstate", () => {
+    const tag = getTagFromURL();
+    currentTag = allTags.includes(tag) ? tag : null;
     renderTags();
     renderArticles();
-    highlightTag();
-
-    const initial = articles.find(a =>
-        currentTag === null || a.tags.includes(currentTag)
-    );
-    if (initial) loadArticle(initial.file);
-
-    window.addEventListener("popstate", () => {
-        currentTag = getTagFromURL();
-        renderArticles();
-        highlightTag();
-    });
+  });
 });

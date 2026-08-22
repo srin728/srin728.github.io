@@ -49,7 +49,7 @@
         {
           "text": "Proceedings of ICALP 2026, LIPIcs, vol. 374, 108:1-108:16, 2026.",
           "doi_id": "10.4230/LIPIcs.ICALP.2026.108",
-          "arxiv_id": "2511.23012"
+          "arxiv_id": "2604.26714"
         }
       ],
       "highlightText": [
@@ -154,7 +154,7 @@
   "presentations": "研究発表",
   "presentations_list": [
     {
-      "title": "“Reconfiguration of vertex-disjoint shortest paths on split graphs",
+      "title": "Reconfiguration of vertex-disjoint shortest paths on split graphs",
       "author": "Rin Saito, Hiroshi Eto, Takehiro Ito",
       "type": "international_non_refereed",
       "links": [
