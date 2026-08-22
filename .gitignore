@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# One-off migration packages
+/apply_phase*.py
+/PHASE*_README.md
+/patch/
+/payload/
+/srin728_phase3_patch/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo

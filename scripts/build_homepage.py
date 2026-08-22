@@ -9,6 +9,8 @@ import sys
 from pathlib import Path
 from urllib.parse import quote
 
+from site_utils import format_date_en, format_date_ja, latest_site_date
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -127,8 +129,6 @@ def render_presentations(data: dict, lang: str) -> str:
 
 def render_biography(value) -> str:
     if isinstance(value, list):
-        # Repository-controlled input. A small amount of inline HTML
-        # (currently a grant link) is intentionally supported here.
         return "<ul>\n" + "\n".join(f"<li>{str(x)}</li>" for x in value) + "\n</ul>"
     return f"<p>{esc(value)}</p>"
 
@@ -136,10 +136,15 @@ def render_biography(value) -> str:
 def render_misc(config: dict) -> str:
     items = []
     for link in config.get("misc_links", []):
-        items.append(
-            f'<li><a href="{esc(link.get("url", ""))}" target="_blank" '
-            f'rel="noopener noreferrer">{esc(link.get("label", "Link"))}</a></li>'
-        )
+        url = str(link.get("url", ""))
+        label = str(link.get("label", "Link"))
+        if link.get("external", url.startswith(("http://", "https://"))):
+            items.append(
+                f'<li><a href="{esc(url)}" target="_blank" '
+                f'rel="noopener noreferrer">{esc(label)}</a></li>'
+            )
+        else:
+            items.append(f'<li><a href="{esc(url)}">{esc(label)}</a></li>')
     for note in config.get("misc_notes", []):
         items.append(f"<li>{esc(note)}</li>")
     return "<ul>\n" + "\n".join(items) + "\n</ul>"
@@ -151,7 +156,37 @@ def page_description(lang: str) -> str:
     return "Rin Saito's academic homepage: research interests, publications, talks, and awards."
 
 
-def build_page(data: dict, config: dict, lang: str) -> str:
+def structured_data(data: dict, config: dict, lang: str, canonical: str, updated_iso: str) -> str:
+    external_urls = [
+        str(link.get("url"))
+        for link in config.get("misc_links", [])
+        if str(link.get("url", "")).startswith(("http://", "https://"))
+    ]
+    person_name = "斉藤 凜" if lang == "ja" else "Rin Saito"
+    alternate = "Rin Saito" if lang == "ja" else "斉藤 凜"
+    graph = {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "name": person_name,
+        "url": canonical,
+        "dateModified": updated_iso,
+        "mainEntity": {
+            "@type": "Person",
+            "name": person_name,
+            "alternateName": alternate,
+            "url": config.get("site_url", "https://srin728.github.io/"),
+            "affiliation": {
+                "@type": "CollegeOrUniversity",
+                "name": config.get("institution", "Tohoku University"),
+            },
+            "sameAs": external_urls,
+            "knowsAbout": data.get("research_areas_content", ""),
+        },
+    }
+    return json.dumps(graph, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+
+
+def build_page(data: dict, config: dict, lang: str, updated_date) -> str:
     is_ja = lang == "ja"
     other_href = "index.html" if is_ja else "ja.html"
     other_label = "English" if is_ja else "日本語"
@@ -169,23 +204,31 @@ def build_page(data: dict, config: dict, lang: str) -> str:
     awards_title = data.get("awards", "Awards")
     misc_title = data.get("misc", "Misc")
 
-    updated = config.get("last_updated_ja" if is_ja else "last_updated_en", "")
+    updated = format_date_ja(updated_date) if is_ja else format_date_en(updated_date)
     updated_prefix = "最終更新: " if is_ja else "Last updated: "
     blog_url = config.get("blog_url", "blog.html")
+    description = page_description(lang)
+    json_ld = structured_data(data, config, lang, canonical, updated_date.isoformat())
 
     return f'''<!DOCTYPE html>
 <html lang="{lang}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{esc(page_description(lang))}">
+  <meta name="description" content="{esc(description)}">
   <meta name="theme-color" content="#ea533a">
   <meta name="google-site-verification" content="{esc(config.get('google_site_verification', ''))}">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="斉藤 凜 (Rin Saito)">
+  <meta property="og:description" content="{esc(description)}">
+  <meta property="og:url" content="{esc(canonical)}">
+  <meta name="twitter:card" content="summary">
   <link rel="canonical" href="{esc(canonical)}">
   <link rel="alternate" hreflang="en" href="{esc(home_en)}">
   <link rel="alternate" hreflang="ja" href="{esc(home_ja)}">
   <link rel="alternate" hreflang="x-default" href="{esc(home_en)}">
   <title>斉藤 凜 (Rin Saito)</title>
+  <script type="application/ld+json">{json_ld}</script>
   <script>
     window.MathJax = {{
       tex: {{
@@ -281,9 +324,10 @@ def expected_outputs(root: Path) -> dict[Path, str]:
     en = load_json(root / "lang" / "en.json")
     ja = load_json(root / "lang" / "ja.json")
     config = load_json(root / "data" / "homepage.json")
+    updated_date = latest_site_date(root)
     return {
-        root / "index.html": build_page(en, config, "en"),
-        root / "ja.html": build_page(ja, config, "ja"),
+        root / "index.html": build_page(en, config, "en", updated_date),
+        root / "ja.html": build_page(ja, config, "ja", updated_date),
     }
 
 

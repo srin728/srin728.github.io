@@ -1,53 +1,129 @@
-# Phase 2 continuation patch
+# srin728.github.io
 
-This patch makes three changes:
+Academic homepage and lightweight notes site for Rin Saito.
 
-1. `main` への push 時に GitHub Actions が自動で
-   - `python scripts/build_homepage.py`
-   - `python scripts/build_blog.py`
-   - `python -m unittest discover -s tests`
-   を実行します。
-   生成 HTML に差分があれば、GitHub Actions が `Rebuild static pages [skip ci]` として自動コミットします。
+The repository uses small Python build scripts to generate static HTML.  
+Generated HTML should normally **not** be edited directly.
 
-2. Homepage のリンク配置
-   - **Preprints**: arXiv 等のボタンをタイトルと同じ行に表示
-   - **Awards**: Link ボタンをタイトルと同じ行に表示
-   - Refereed Papers / Talks は従来どおり次の行に表示
+## Source files
 
-3. Blog の static generation
-   - `articles/*.md` を `scripts/build_blog.py` が静的 HTML に変換
-   - `blog.js` から Markdown の `fetch()` / runtime rendering を削除
-   - `blog.html` および `notes/*.html` は JavaScript 無効でも読めます
-   - タグ別ページも自動生成されます
-   - ブログの青系デザイン (`blog.css`) は変更しません
+### Homepage
 
-## 適用
+- `lang/en.json` — English profile, papers, talks, awards
+- `lang/ja.json` — Japanese profile, papers, talks, awards
+- `data/homepage.json` — site-level links/settings
+- `style.css` — homepage design
 
-リポジトリ直下で:
+Generate:
 
 ```bash
-python apply_phase2_continuation.py .
+python scripts/build_homepage.py
 ```
 
-適用スクリプトは必要ファイルを置き換えた後、その場で homepage/blog を生成し、テストを実行します。
+This creates/updates:
 
-その後:
+- `index.html`
+- `ja.html`
+
+The footer date is calculated automatically from the latest Git commit that changed a meaningful site source file.
+
+### Supplement page
+
+`data/supplemental.json` contains:
+
+- `coauthor_talks` — 共著者による発表
+- `updates` — 近況報告
+
+Generate:
 
 ```bash
-git diff
-git add .
-git commit -m "Continue static site generation"
-git push
+python scripts/build_supplement.py
 ```
 
-最初の push 以降は、`lang/*.json` や `articles/*.md` を編集して push すれば、
-GitHub Actions が生成 HTML を更新します。
+This creates `supplement.html`.  
+The page uses `#f8c112` and `#f6ae54` as its main colors.
 
-## 注意
+Example entry:
 
-GitHub repository settings で Actions の `GITHUB_TOKEN` に write permission が禁止されている場合、
-最後の自動コミットだけ失敗します。その場合は:
+```json
+{
+  "coauthor_talks": [
+    {
+      "date": "2026-09-01",
+      "speaker": "Coauthor Name",
+      "title": "Talk title",
+      "event": "Workshop name",
+      "location": "Tokyo, Japan",
+      "url": "https://example.com/",
+      "note": "Optional note"
+    }
+  ],
+  "updates": [
+    {
+      "date": "2026-09-10",
+      "text": "Short update.",
+      "url": "https://example.com/",
+      "link_text": "詳細"
+    }
+  ]
+}
+```
 
-Settings → Actions → General → Workflow permissions
+### Notes / blog
 
-で `Read and write permissions` を有効にしてください。
+Edit Markdown files in `articles/`.
+
+Generate:
+
+```bash
+python scripts/build_blog.py
+```
+
+This creates `blog.html` and pages under `notes/`.
+
+### SEO metadata
+
+Generate:
+
+```bash
+python scripts/build_site_meta.py
+```
+
+This creates:
+
+- `sitemap.xml`
+- `robots.txt`
+
+The homepage also contains Schema.org `ProfilePage` / `Person` structured data.
+
+## Automatic build
+
+A push to `main` runs `.github/workflows/build-static-pages.yml`.
+
+The workflow:
+
+1. builds the homepage;
+2. builds the notes/blog;
+3. builds the supplement page;
+4. builds `sitemap.xml` and `robots.txt`;
+5. runs the test suite;
+6. commits generated files when necessary.
+
+For the final step, GitHub Actions needs:
+
+`Settings → Actions → General → Workflow permissions → Read and write permissions`
+
+## Tests
+
+```bash
+python -m unittest discover -s tests
+```
+
+To check that generated files are current without rewriting them:
+
+```bash
+python scripts/build_homepage.py --check
+python scripts/build_blog.py --check
+python scripts/build_supplement.py --check
+python scripts/build_site_meta.py --check
+```
