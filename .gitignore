@@ -3,12 +3,15 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 
-# One-off migration packages
+# One-off migration / patch packages
 /apply_phase*.py
 /PHASE*_README.md
 /patch/
+/patches/
 /payload/
-/srin728_phase3_patch/
+/replacement/
+/srin728_phase*_patch/
+/srin728_homepage_phase*.zip
 
 # OS/editor noise
 .DS_Store

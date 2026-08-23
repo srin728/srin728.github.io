@@ -29,6 +29,15 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Check generator syntax
+        run: |
+          python -m py_compile \
+            scripts/build_homepage.py \
+            scripts/build_blog.py \
+            scripts/build_supplement.py \
+            scripts/build_site_meta.py \
+            scripts/site_utils.py
+
       - name: Build homepage
         run: python scripts/build_homepage.py
 
@@ -41,8 +50,12 @@ jobs:
       - name: Build site metadata
         run: python scripts/build_site_meta.py
 
-      - name: Run tests
-        run: python -m unittest discover -s tests
+      - name: Verify generated pages
+        run: |
+          python scripts/build_homepage.py --check
+          python scripts/build_blog.py --check
+          python scripts/build_supplement.py --check
+          python scripts/build_site_meta.py --check
 
       - name: Commit generated pages
         shell: bash

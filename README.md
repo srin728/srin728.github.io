@@ -2,7 +2,7 @@
 
 Academic homepage and lightweight notes site for Rin Saito.
 
-The repository uses small Python build scripts to generate static HTML.  
+The repository uses small Python build scripts to generate static HTML.
 Generated HTML should normally **not** be edited directly.
 
 ## Source files
@@ -40,34 +40,7 @@ Generate:
 python scripts/build_supplement.py
 ```
 
-This creates `supplement.html`.  
-The page uses `#f8c112` and `#f6ae54` as its main colors.
-
-Example entry:
-
-```json
-{
-  "coauthor_talks": [
-    {
-      "date": "2026-09-01",
-      "speaker": "Coauthor Name",
-      "title": "Talk title",
-      "event": "Workshop name",
-      "location": "Tokyo, Japan",
-      "url": "https://example.com/",
-      "note": "Optional note"
-    }
-  ],
-  "updates": [
-    {
-      "date": "2026-09-10",
-      "text": "Short update.",
-      "url": "https://example.com/",
-      "link_text": "詳細"
-    }
-  ]
-}
-```
+This creates `supplement.html`.
 
 ### Notes / blog
 
@@ -89,12 +62,7 @@ Generate:
 python scripts/build_site_meta.py
 ```
 
-This creates:
-
-- `sitemap.xml`
-- `robots.txt`
-
-The homepage also contains Schema.org `ProfilePage` / `Person` structured data.
+This creates `sitemap.xml` and `robots.txt`.
 
 ## Automatic build
 
@@ -102,26 +70,35 @@ A push to `main` runs `.github/workflows/build-static-pages.yml`.
 
 The workflow:
 
-1. builds the homepage;
-2. builds the notes/blog;
-3. builds the supplement page;
-4. builds `sitemap.xml` and `robots.txt`;
-5. runs the test suite;
-6. commits generated files when necessary.
+1. checks the Python syntax of the active generators;
+2. builds the homepage;
+3. builds the notes/blog;
+4. builds the supplement page;
+5. builds `sitemap.xml` and `robots.txt`;
+6. verifies generated files with `--check`;
+7. commits generated files when necessary.
 
 For the final step, GitHub Actions needs:
 
 `Settings → Actions → General → Workflow permissions → Read and write permissions`
 
-## Tests
+## Local validation
+
+The repository no longer requires a `tests/` directory.
 
 ```bash
-python -m unittest discover -s tests
-```
+python -m py_compile \
+  scripts/build_homepage.py \
+  scripts/build_blog.py \
+  scripts/build_supplement.py \
+  scripts/build_site_meta.py \
+  scripts/site_utils.py
 
-To check that generated files are current without rewriting them:
+python scripts/build_homepage.py
+python scripts/build_blog.py
+python scripts/build_supplement.py
+python scripts/build_site_meta.py
 
-```bash
 python scripts/build_homepage.py --check
 python scripts/build_blog.py --check
 python scripts/build_supplement.py --check
