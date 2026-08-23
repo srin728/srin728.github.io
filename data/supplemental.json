@@ -1,6 +1,83 @@
 {
   "title": "Supplement / 補足情報",
-  "intro": "共著者による発表や近況報告など、研究者ホームページ本体には載せにくい補足情報をまとめています。",
-  "coauthor_talks": [],
+  "intro": "共著者による発表や近況報告など，研究者ホームページ本体には載せにくい補足情報をまとめています",
+  "coauthor_talks_note": "* は発表者を示します",
+  "coauthor_talks": [
+    {
+      "sort_date": "2026-02-9",
+      "authors": [
+        "Rin Saito",
+        "Anouk Sommer",
+        "Tatsuhiro Suga",
+        "*Takahiro Suzuki",
+        "Yuma Tamura"
+      ],
+      "title": "Solution Discovery for Vertex Cover, Independent Set, Dominating Set, and Feedback Vertex Set",
+      "event": "The 51st International Conference on Current Trends in Theory and Practice of Computer Science (SOFSEM 2026)",
+      "location": "Kraków, Poland",
+      "date_text": "February 9-13, 2026."
+    },
+    {
+      "sort_date": "2026-01-26",
+      "authors": [
+        "*伊藤 裕太",
+        "斉藤 凜",
+        "伊藤 健洋"
+      ],
+      "title": "塗り替え制約付き点彩色遷移問題について",
+      "event": "2025年度冬のLAシンポジウム",
+      "location": "京都",
+      "date_text": "2026年1月26日（月）–28日（水）"
+    },
+    {
+      "sort_date": "2025-03",
+      "authors": [
+        "*儀間 達也",
+        "小林 靖明",
+        "斉藤 凜"
+      ],
+      "title": "ラベル付きトークン遷移問題",
+      "event": "情報処理学会 第202回アルゴリズム研究会",
+      "location": "福井",
+      "date_text": "2025年3月"
+    },
+    {
+      "sort_date": "2025-01-27",
+      "authors": [
+        "*鈴木 龍太朗",
+        "斉藤 凜",
+        "伊藤 健洋"
+      ],
+      "title": "頂点重み関数付きシュタイナー歩道問題の計算複雑性",
+      "event": "2024年度冬のLAシンポジウム",
+      "location": "京都",
+      "date_text": "2025年1月27日（月）–29日（水）"
+    },
+    {
+      "sort_date": "2024-10-07",
+      "authors": [
+        "*Rikuto Kawana",
+        "Rin Saito",
+        "Takehiro Ito"
+      ],
+      "title": "A new optimization variant of independent set reconfiguration",
+      "event": "The 5th International Workshop on Combinatorial Reconfiguration (CoRe 2024)",
+      "location": "福岡",
+      "date_text": "2024年10月7日（月）–11日（金）"
+    },
+    {
+      "sort_date": "2024",
+      "authors": [
+        "斉藤 凜",
+        "菅 達皓",
+        "*鈴木 隆央",
+        "田村 祐馬"
+      ],
+      "title": "Feedback vertex set discovery via reconfiguration",
+      "event": "2024年度夏のLAシンポジウム",
+      "location": "鳥羽",
+      "date_text": "2024年7月16日（火）–18日（木）"
+    }
+  ],
   "updates": []
 }

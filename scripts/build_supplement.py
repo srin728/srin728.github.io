@@ -29,26 +29,57 @@ def maybe_link(url: str, label: str) -> str:
     return f'<a href="{esc(url)}"{attrs}>{esc(label)}</a>'
 
 
+def render_authors(item: dict) -> str:
+    authors = item.get("authors") or []
+    if authors:
+        author_text = "，".join(esc(author) for author in authors)
+    else:
+        author_text = esc(item.get("speaker", ""))
+
+    affiliation = esc(item.get("affiliation", ""))
+    if affiliation:
+        author_text += f"（{affiliation}）"
+    return author_text
+
+
 def render_coauthor_talks(items) -> str:
     if not items:
         return '<p class="empty">現在掲載準備中です。</p>'
+
     rows = []
-    for item in sorted(items, key=lambda x: str(x.get("date", "")), reverse=True):
-        title = maybe_link(str(item.get("url", "")), str(item.get("title", "Untitled talk")))
-        speaker = esc(item.get("speaker", ""))
+    for item in sorted(
+        items,
+        key=lambda x: str(x.get("sort_date") or x.get("date") or ""),
+        reverse=True,
+    ):
+        authors = render_authors(item)
+        title_text = str(item.get("title", "Untitled talk"))
+        title = maybe_link(str(item.get("url", "")), title_text)
         event = esc(item.get("event", ""))
-        date = esc(item.get("date", ""))
         location = esc(item.get("location", ""))
-        meta = " · ".join(x for x in (speaker, event, date, location) if x)
+        date_text = esc(item.get("date_text") or item.get("date", ""))
+
+        citation_parts = []
+        if authors:
+            citation_parts.append(f'<span class="entry-authors">{authors}</span>')
+        citation_parts.append(f'<span class="entry-talk-title">「{title}」</span>')
+
+        venue_parts = [x for x in (event, location, date_text) if x]
+        venue = "，".join(venue_parts)
+        if venue:
+            citation_parts.append(f'<span class="entry-venue">{venue}</span>')
+
+        citation = "．".join(citation_parts) + "．"
+
         note = esc(item.get("note", ""))
         note_html = f'<p class="entry-note">{note}</p>' if note else ""
         rows.append(
             '<li class="entry">'
-            f'<p class="entry-title">{title}</p>'
-            f'<p class="entry-meta">{meta}</p>'
+            f'<p class="entry-citation">{citation}</p>'
             f'{note_html}'
             '</li>'
         )
+
     return '<ul class="entry-list">\n' + "\n".join(rows) + "\n</ul>"
 
 
@@ -76,7 +107,13 @@ def build_page(data: dict, config: dict, updated_date) -> str:
     canonical = site_url + "supplement.html"
     title = str(data.get("title", "Supplement / 補足情報"))
     intro = str(data.get("intro", ""))
+    talks_note = str(data.get("coauthor_talks_note", ""))
     updated = format_date_ja(updated_date)
+
+    talks_note_html = (
+        f'<p class="section-note">{esc(talks_note)}</p>'
+        if talks_note else ""
+    )
 
     return f'''<!DOCTYPE html>
 <html lang="ja">
@@ -107,6 +144,7 @@ def build_page(data: dict, config: dict, updated_date) -> str:
 
     <section id="coauthor-talks">
       <h2>共著者による発表</h2>
+      {talks_note_html}
       {render_coauthor_talks(data.get("coauthor_talks") or [])}
     </section>
 
