@@ -4,7 +4,7 @@
   "coauthor_talks_note": "* は発表者を示します",
   "coauthor_talks": [
     {
-      "sort_date": "2026-02-9",
+      "sort_date": "2026-02-09",
       "authors": [
         "Rin Saito",
         "Anouk Sommer",
@@ -15,7 +15,7 @@
       "title": "Solution Discovery for Vertex Cover, Independent Set, Dominating Set, and Feedback Vertex Set",
       "event": "The 51st International Conference on Current Trends in Theory and Practice of Computer Science (SOFSEM 2026)",
       "location": "Kraków, Poland",
-      "date_text": "February 9-13, 2026."
+      "date_text": "February 9–13, 2026"
     },
     {
       "sort_date": "2026-01-26",
@@ -30,7 +30,7 @@
       "date_text": "2026年1月26日（月）–28日（水）"
     },
     {
-      "sort_date": "2025-03",
+      "sort_date": "2025-03-01",
       "authors": [
         "*儀間 達也",
         "小林 靖明",
@@ -66,7 +66,7 @@
       "date_text": "2024年10月7日（月）–11日（金）"
     },
     {
-      "sort_date": "2024",
+      "sort_date": "2024-07-16",
       "authors": [
         "斉藤 凜",
         "菅 達皓",
@@ -79,5 +79,10 @@
       "date_text": "2024年7月16日（火）–18日（木）"
     }
   ],
-  "updates": []
+  "updates": [
+    {
+      "date": "2026-08-23",
+      "text": "補足情報ページを作りました"
+    }
+  ]
 }

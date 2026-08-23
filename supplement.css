@@ -8,13 +8,8 @@
   --line: #ead69a;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -24,15 +19,8 @@ body {
   line-height: 1.7;
 }
 
-a {
-  color: #8b5a00;
-  text-underline-offset: 0.15em;
-}
-
-a:hover,
-a:focus-visible {
-  text-decoration-thickness: 2px;
-}
+a { color: #8b5a00; text-underline-offset: 0.15em; }
+a:hover, a:focus-visible { text-decoration-thickness: 2px; }
 
 .page {
   width: min(900px, calc(100% - 2rem));
@@ -48,15 +36,8 @@ a:focus-visible {
   background: #fff;
 }
 
-.hero h1 {
-  margin: 0 0 0.35rem;
-  font-size: clamp(1.7rem, 4vw, 2.5rem);
-}
-
-.hero p {
-  margin: 0;
-  color: var(--muted);
-}
+.hero h1 { margin: 0 0 0.35rem; font-size: clamp(1.7rem, 4vw, 2.5rem); }
+.hero p { margin: 0; color: var(--muted); }
 
 .nav {
   display: flex;
@@ -74,10 +55,7 @@ a:focus-visible {
   text-decoration: none;
 }
 
-section {
-  margin: 2rem 0;
-}
-
+section { margin: 2rem 0; }
 section h2 {
   margin: 0 0 0.8rem;
   padding-left: 0.65rem;
@@ -93,6 +71,16 @@ section h2 {
   list-style: none;
 }
 
+.numbered-list {
+  padding-left: 2.25rem;
+  list-style: decimal;
+}
+
+.numbered-list .entry::marker {
+  color: var(--muted);
+  font-weight: 700;
+}
+
 .entry {
   padding: 0.9rem 1rem;
   border: 1px solid var(--line);
@@ -100,25 +88,13 @@ section h2 {
   background: var(--card);
 }
 
-.entry-title {
-  margin: 0;
-  font-weight: 700;
-}
-
-.entry-meta {
-  margin: 0.2rem 0 0;
-  color: var(--muted);
-  font-size: 0.92rem;
-}
-
-.entry-note {
-  margin: 0.35rem 0 0;
-}
-
-.empty {
-  color: var(--muted);
-  font-style: italic;
-}
+.entry-title, .entry-citation { margin: 0; }
+.entry-title { font-weight: 700; }
+.entry-meta { margin: 0.2rem 0 0; color: var(--muted); font-size: 0.92rem; }
+.entry-note { margin: 0.35rem 0 0; }
+.section-note { margin: -0.25rem 0 0.9rem; color: var(--muted); font-size: 0.92rem; }
+.empty { color: var(--muted); font-style: italic; }
+.landing { min-height: 10rem; }
 
 footer {
   margin-top: 3rem;
@@ -129,12 +105,7 @@ footer {
 }
 
 @media (max-width: 600px) {
-  .page {
-    width: min(100% - 1.2rem, 900px);
-    padding-top: 1.2rem;
-  }
-
-  .hero {
-    padding: 1rem;
-  }
+  .page { width: min(100% - 1.2rem, 900px); padding-top: 1.2rem; }
+  .hero { padding: 1rem; }
+  .numbered-list { padding-left: 1.8rem; }
 }

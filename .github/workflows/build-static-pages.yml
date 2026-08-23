@@ -68,7 +68,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add index.html ja.html blog.html supplement.html notes/ sitemap.xml robots.txt
+          git add index.html ja.html blog.html supplement.html supplement-talks.html supplement-updates.html notes/ sitemap.xml robots.txt
           if git diff --cached --quiet; then
             echo "No generated changes to commit."
             exit 0
