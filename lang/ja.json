@@ -19,7 +19,8 @@
       "author": "Rin Saito, Yuma Tamura",
       "links": [
         {
-          "text": "To appear in IPEC 2026."
+          "text": "To appear in IPEC 2026.",
+          "arxiv_id": "2611.15024"
         }
       ],
       "highlightText": [
@@ -32,7 +33,7 @@
       "author": "Toranosuke Kokai, Rin Saito, Tatsuhiro Suga, Takahiro Suzuki, Yuma Tamura",
       "links": [
         {
-          "text": "Proceedings of COCOON 2026, LNCS, Vol. 16835, pp. 163-176, 2026.",
+          "text": "Proceedings of COCOON 2026, LNCS, Vol. 16835, pp. 163–176, 2026.",
           "doi_id": "10.1007/978-981-92-3309-0_13",
           "arxiv_id": "2607.19134"
         }
@@ -47,7 +48,7 @@
       "author": "Hung P. Hoang, Naoto Ohsaka, Rin Saito, Yuma Tamura",
       "links": [
         {
-          "text": "Proceedings of ICALP 2026, LIPIcs, vol. 374, 108:1-108:16, 2026.",
+          "text": "Proceedings of ICALP 2026, LIPIcs, Vol. 374, 108:1–108:16, 2026.",
           "doi_id": "10.4230/LIPIcs.ICALP.2026.108",
           "arxiv_id": "2604.26714"
         }
@@ -62,7 +63,7 @@
       "author": "Rin Saito, Anouk Sommer, Tatsuhiro Suga, Takahiro Suzuki, Yuma Tamura",
       "links": [
         {
-          "text": "Proceedings of SOFSEM 2026, LNCS, Vol. 16448, pp. 432-446, 2026.",
+          "text": "Proceedings of SOFSEM 2026, LNCS, Vol. 16448, pp. 432–446, 2026.",
           "doi_id": "10.1007/978-3-032-17801-5_32",
           "arxiv_id": "2511.23012"
         }
@@ -77,7 +78,7 @@
       "author": "Rin Saito, Takehiro Ito",
       "links": [
         {
-          "text": "Proceedings of WALCOM 2026, LNCS, Vol. 16444, pp. 432-447, 2026.",
+          "text": "Proceedings of WALCOM 2026, LNCS, Vol. 16444, pp. 432–447, 2026.",
           "doi_id": "10.1007/978-981-95-7127-7_29"
         }
       ],
@@ -91,7 +92,7 @@
       "author": "Janosch Fuchs, Rin Saito, Tatsuhiro Suga, Takahiro Suzuki, Yuma Tamura",
       "links": [
         {
-          "text": "Proceedings of ISAAC 2025, LIPIcs, vol. 359, 33:1-33:21, 2025.",
+          "text": "Proceedings of ISAAC 2025, LIPIcs, Vol. 359, 33:1–33:21, 2025.",
           "doi_id": "10.4230/LIPIcs.ISAAC.2025.33",
           "arxiv_id": "2511.06473"
         }
@@ -106,7 +107,7 @@
       "author": "Tesshu Hanaka, Yuni Iwamasa, Yasuaki Kobayashi, Yuto Okada, Rin Saito",
       "links": [
         {
-          "text": "Proceedings of ISAAC 2024, LIPIcs, vol. 322, 38:1-38:16, 2024.",
+          "text": "Proceedings of ISAAC 2024, LIPIcs, Vol. 322, 38:1–38:16, 2024.",
           "doi_id": "10.4230/LIPICS.ISAAC.2024.38",
           "arxiv_id": "2409.07848"
         }
@@ -121,11 +122,11 @@
       "author": "Rin Saito, Hiroshi Eto, Takehiro Ito, Ryuhei Uehara",
       "links": [
         {
-          "text": "Journal of Graph Algorithms and Applications, Vol. 28, No. 3, pp. 87-101, 10 September 2024.",
+          "text": "Journal of Graph Algorithms and Applications, Vol. 28, No. 3, pp. 87–101, 10 September 2024.",
           "doi_id": "10.7155/jgaa.v28i3.2973"
         },
         {
-          "text": "Proceedings of WALCOM 2023, LNCS, Vol. 13973, pp. 191-201, 2023.",
+          "text": "Proceedings of WALCOM 2023, LNCS, Vol. 13973, pp. 191–201, 2023.",
           "doi_id": "10.1007/978-3-031-27051-2_17"
         }
       ],
@@ -159,7 +160,7 @@
       "type": "international_non_refereed",
       "links": [
         {
-          "text": "The 4th International Workshop on Combinatorial Reconfiguration (CoRe 2022), Banff, Canada, May 8-13, 2022."
+          "text": "The 4th International Workshop on Combinatorial Reconfiguration (CoRe 2022), Banff, Canada, May 8–13, 2022."
         }
       ],
       "highlightText": [
@@ -169,11 +170,24 @@
     },
     {
       "title": "点素最短パス遷移の計算複雑性",
-      "author": "斉藤 凜, 江藤 宏, 伊藤 健洋, 上原隆平",
+      "author": "斉藤 凜, 江藤 宏, 伊藤 健洋, 上原 隆平",
       "type": "domestic_meeting",
       "links": [
         {
-          "text": "電気情報通信学会コンピュテーション研究会, 愛媛, 2022年12月6日."
+          "text": "電子情報通信学会 コンピュテーション研究会, 愛媛, 2022年12月6日."
+        }
+      ],
+      "highlightText": [
+        "斉藤 凜"
+      ]
+    },
+    {
+      "title": "点素最短パス遷移問題に対するアルゴリズム",
+      "author": "斉藤 凜, 江藤 宏, 伊藤 健洋, 上原 隆平",
+      "type": "domestic_meeting",
+      "links": [
+        {
+          "text": "科研費・学術変革領域研究(B)「組合せ遷移の展開に向けた計算機科学・工学・数学によるアプローチの融合」2022年度「組合せ遷移」学生シンポジウム, 宮城, 2023年2月22日."
         }
       ],
       "highlightText": [
@@ -182,7 +196,7 @@
     },
     {
       "title": "Reconfiguration of Vertex-Disjoint Shortest Paths on Graphs",
-      "author": "Rin Saito, Hiroshi Eto, Takehiro Ito and Ryuhei Uehara",
+      "author": "Rin Saito, Hiroshi Eto, Takehiro Ito, Ryuhei Uehara",
       "type": "international_non_refereed",
       "links": [
         {
@@ -192,19 +206,6 @@
       "highlightText": [
         "Rin Saito",
         "WALCOM 2023"
-      ]
-    },
-    {
-      "title": "点素最短パス遷移問題に対するアルゴリズム",
-      "author": "斉藤 凜, 江藤 宏, 伊藤 健洋, 上原隆平",
-      "type": "domestic_meeting",
-      "links": [
-        {
-          "text": "科研費・学術変革領域研究(B)「組合せ遷移の展開に向けた計算機科学・工学・数学によるアプローチの融合」2022 年度「組合せ遷移」学生シンポジウム, 宮城, 2023年2月22日."
-        }
-      ],
-      "highlightText": [
-        "斉藤 凜"
       ]
     },
     {
@@ -226,7 +227,7 @@
       "type": "domestic_meeting",
       "links": [
         {
-          "text": "2024年電子情報通信学会 総合大会 COMP-AFSA 学生シンポジウム, 広島, 2024年3月5日-6日."
+          "text": "2024年電子情報通信学会 総合大会 COMP-AFSA 学生シンポジウム, 広島, 2024年3月5日–6日."
         }
       ],
       "highlightText": [
@@ -239,7 +240,7 @@
       "type": "domestic_meeting",
       "links": [
         {
-          "text": "日本オペレーションズ・リサーチ学会 研究部会「最適化の理論とアルゴリズム:未来を担う若手研究者の集い 2024」,茨城, 2024年5月18-19日."
+          "text": "日本オペレーションズ・リサーチ学会 研究部会「最適化の理論とアルゴリズム:未来を担う若手研究者の集い 2024」, 茨城, 2024年5月18–19日."
         }
       ],
       "highlightText": [
@@ -252,20 +253,7 @@
       "type": "domestic_meeting",
       "links": [
         {
-          "text": "離散数学とその応用研究集会2024 , 山形大学, 2024年8月19日-21日."
-        }
-      ],
-      "highlightText": [
-        "斉藤 凜"
-      ]
-    },
-    {
-      "title": "マトロイドの基の組の遷移問題",
-      "author": "土中 哲秀, 岩政 勇仁, 小林 靖明, 岡田 優斗, 斉藤 凜",
-      "type": "domestic_meeting",
-      "links": [
-        {
-          "text": "電子情報通信学会 コンピュテーション研究会 , 東北大学, 2024年10月24日."
+          "text": "離散数学とその応用研究集会2024, 山形大学, 2024年8月19日–21日."
         }
       ],
       "highlightText": [
@@ -278,7 +266,7 @@
       "type": "international_non_refereed",
       "links": [
         {
-          "text": "The 5th International Workshop on Combinatorial Reconfiguration (CoRe 2024), Fukuoka, Japan, October 7-11, 2024."
+          "text": "The 5th International Workshop on Combinatorial Reconfiguration (CoRe 2024), Fukuoka, Japan, October 7–11, 2024."
         }
       ],
       "highlightText": [
@@ -287,12 +275,25 @@
       ]
     },
     {
+      "title": "マトロイドの基の組の遷移問題",
+      "author": "土中 哲秀, 岩政 勇仁, 小林 靖明, 岡田 優斗, 斉藤 凜",
+      "type": "domestic_meeting",
+      "links": [
+        {
+          "text": "電子情報通信学会 コンピュテーション研究会, 東北大学, 2024年10月24日."
+        }
+      ],
+      "highlightText": [
+        "斉藤 凜"
+      ]
+    },
+    {
       "title": "Basis Sequence Reconfiguration in the Union of Matroids",
       "author": "Tesshu Hanaka, Yuni Iwamasa, Yasuaki Kobayashi, Yuto Okada, Rin Saito",
       "type": "international_non_refereed",
       "links": [
         {
-          "text": "The 35th International Symposium on Algorithms and Computation (ISAAC 2024), Sydney, Australia, December 8-11, 2024."
+          "text": "The 35th International Symposium on Algorithms and Computation (ISAAC 2024), Sydney, Australia, December 8–11, 2024."
         }
       ],
       "highlightText": [
@@ -301,8 +302,21 @@
       ]
     },
     {
+      "title": "極小フィードバック頂点集合に対するコンパクト表現の一般化",
+      "author": "斉藤 凜",
+      "type": "domestic_meeting",
+      "links": [
+        {
+          "text": "第35回列挙アルゴリズムセミナー, 群馬大学伊香保研修所, 2025年3月5日–7日."
+        }
+      ],
+      "highlightText": [
+        "斉藤 凜"
+      ]
+    },
+    {
       "title": "Complexity of Reconfiguring Vertex-Disjoint Shortest Paths",
-      "author": "Rin Saito and Takehiro Ito",
+      "author": "Rin Saito, Takehiro Ito",
       "type": "international_non_refereed",
       "links": [
         {
@@ -315,25 +329,12 @@
       ]
     },
     {
-      "title": "極小フィードバック頂点集合に対するコンパクト表現の一般化",
-      "author": "斉藤 凜",
-      "type": "domestic_meeting",
-      "links": [
-        {
-          "text": "第35回列挙アルゴリズムセミナー , 群馬大学伊香保研修所, 2025年3月5日-7日."
-        }
-      ],
-      "highlightText": [
-        "斉藤 凜"
-      ]
-    },
-    {
       "title": "Coloring Reconfiguration under Color Swapping",
       "author": "Janosch Fuchs, Rin Saito, Tatsuhiro Suga, Takahiro Suzuki, Yuma Tamura",
       "type": "international_non_refereed",
       "links": [
         {
-          "text": "The 36th International Symposium on Algorithms and Computation (ISAAC 2025), Tainan, Taiwan, December 7-10, 2025."
+          "text": "The 36th International Symposium on Algorithms and Computation (ISAAC 2025), Tainan, Taiwan, December 7–10, 2025."
         }
       ],
       "highlightText": [
@@ -347,7 +348,7 @@
       "type": "international_non_refereed",
       "links": [
         {
-          "text": "The 20th International Conference and Workshops on Algorithms and Computation (WALCOM 2026),Perugia, Italy, March 4-6, 2026."
+          "text": "The 20th International Conference and Workshops on Algorithms and Computation (WALCOM 2026), Perugia, Italy, March 4–6, 2026."
         }
       ],
       "highlightText": [
@@ -370,12 +371,12 @@
       ]
     },
     {
-      "title": "k-Product Lists for (Generalized) Feedback Vertex Sets: A Tool for Designing FPT Algorithms",
+      "title": "$k$-Product Lists for (Generalized) Feedback Vertex Sets: A Tool for Designing FPT Algorithms",
       "author": "Rin Saito, Yuma Tamura",
       "type": "international_non_refereed",
       "links": [
         {
-          "text": "The 17th Annual Meeting of Asian Association for Algorithms and Computation (AAAC 2026), Qingdao, China, May 23-24, 2026."
+          "text": "The 17th Annual Meeting of Asian Association for Algorithms and Computation (AAAC 2026), Qingdao, China, May 23–24, 2026."
         }
       ],
       "highlightText": [
@@ -389,12 +390,40 @@
       "type": "international_non_refereed",
       "links": [
         {
-          "text": "The 32nd International Computing and Combinatorics Conference (COCOON 2026), Singapore, Singapore, July 23-25, 2026."
+          "text": "The 32nd International Computing and Combinatorics Conference (COCOON 2026), Singapore, Singapore, July 23–25, 2026."
         }
       ],
       "highlightText": [
         "Rin Saito",
         "COCOON 2026"
+      ]
+    },
+    {
+      "title": "$k$-Product Lists for (Generalized) Feedback Vertex Sets: A Tool for Designing FPT Algorithms",
+      "author": "Rin Saito, Yuma Tamura",
+      "type": "international_non_refereed",
+      "links": [
+        {
+          "text": "The 21st International Symposium on Parameterized and Exact Computation (IPEC 2026), L’Aquila, Italy, September 2–4, 2026.",
+          "url": "https://algo-conference.org/2026/ipec/"
+        }
+      ],
+      "highlightText": [
+        "Rin Saito",
+        "IPEC 2026"
+      ]
+    },
+    {
+      "title": "$k$-Product Lists for (Generalized) Feedback Vertex Sets: A Tool for Designing FPT Algorithms",
+      "author": "斉藤 凜, 田村 祐馬",
+      "type": "domestic_meeting",
+      "links": [
+        {
+          "text": "電子情報通信学会 コンピュテーション研究会, 東北大学, 2026年10月26日."
+        }
+      ],
+      "highlightText": [
+        "斉藤 凜"
       ]
     }
   ],
